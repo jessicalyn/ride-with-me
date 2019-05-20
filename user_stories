@@ -1,0 +1,40 @@
+## Ride with Me User Stories
+
+### Driver User Story
+David is driving from Denver to Indianapolis. He opens Ride with Me and clicks to Create a Ride. He is taken to the Create a Ride page where he can enter start point, end point, date of the trip, compensation for the trip, available number of seats, and a short description of the ride. After he has completed the form he will click to Add the Ride and be routed to the Ride page confirmation screen.
+
+When a rider requests to join a ride David receives a message in his Inbox. He can choose to accept or deny the request. He can also go to the Ride Information page to cancel or complete the ride.
+
+### Rider User Story
+Dione lives in Denver and wants to visit Indiana for the strawbale festival. She visits Ride with Me and searches for Rides between Denver and Indianapolis. She finds the Ride submitted by David meets her criteria and has a seat available. She clicks to Join the Ride and sends a request message to David to join the ride.
+
+When David accepts Dione's request to join the trip, the Ride will appear in her Upcoming Rides section of My Rides and she will be able to cancel her seat in the trip.
+
+The User should be able to:
+- signup
+- login (extension is OAuth signup/login)
+- logout
+- create a Ride
+  - start and end destinations
+  - start date
+  - compensation
+  - available seats
+  - description
+- create and send a request to join a ride 
+  - can add/update the message before sending
+- accept or deny someone's request to your ride
+- can search for trips by start and end destination and date
+- can view list of available trips
+- can see upcoming and completed trips
+- cancel a ride as a passenger or driver
+
+Cancel Ride
+David is walking his dog, slips and breaks his leg. He cannot drive to Indianapolis anymore, so he goes to Ride with Me, logs in and goes to My Rides. He clicks on his upcoming ride to Indianapolis and clicks on Cancel. 
+
+Dione then gets an email that her ride has been canceled. The ride's status is now 'canceled' on her My Rides page. All other passengers get the same email. 
+
+Profile
+Dione can go to her profile and edit her information, see her rides, create a ride or search for a ride to join. 
+
+See My Rides
+Dione can click on Rides in the nav bar and see all of her rides. She has a section for Upcoming Rides and Completed Rides. 
