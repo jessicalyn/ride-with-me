@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { RideSearch } from '../RideSearch/RideSearch';
 import { CreateRide } from '../CreateRide/CreateRide';
+import { SearchResults } from '../../components/SearchResults/SearchResults';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       </header>
       <Route path='/' component={ RideSearch } />
       <Route path='/' component={ CreateRide } />
+      <SearchResults />
     </div>
   );
 }
