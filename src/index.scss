@@ -6,6 +6,7 @@
 @import './containers/CreateRide/CreateRide.scss';
 @import './components/SearchResults/SearchResults.scss';
 @import './containers/MyRides/MyRides.scss';
+@import './containers/Profile/Profile.scss';
 
 * {
   box-sizing: border-box;
@@ -18,4 +19,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('./assets/road-background.jpg');
+}
+
+.containers {
+  box-shadow: $box-shadow;
+  border: 2px solid black;
+  width: 80%;
+  margin: 20px auto;
+  background-color: white;
+  border-radius: 10px;
 }

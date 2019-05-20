@@ -3,10 +3,8 @@
 }
 
 header {
-  box-shadow: $box-shadow;
-  border: 2px solid black;
   width: 100%;
-  margin: 10px auto;
+  margin: auto;
   background-color: white;
   display: flex
 }
@@ -14,14 +12,14 @@ header {
 h1 {
   flex: 1;
   font-family: $font-title;
+  margin: 30px;
 }
 
 .header-buttons {
   flex: 1;
-  
 }
 
-button {
+.nav-buttons {
   height: 50px;
   width: 100px;
   border-radius: 10px;
@@ -29,4 +27,13 @@ button {
   font-family: $font-main;
   font-size: 18px;
   box-shadow: $box-shadow;
+  text-decoration: none;
+  color: black;
+  padding: 10px 20px;
+  border: .5px solid lightgray;
+}
+
+.home-button {
+  text-decoration: none;
+  color: black
 }
