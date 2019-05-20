@@ -11,12 +11,13 @@ function App() {
       <header className="App-header">
         <Link to='/' className="home-button"><h1>Ride With Me</h1></Link>
         <div className="header-buttons">
+          <Link to='/newride' className="nav-buttons">Create a Ride</Link>
           <Link to='/myrides' className="nav-buttons">My Rides</Link>
           <Link to='/profile' className="nav-buttons">Profile</Link>
         </div>
       </header>
       <Route exact path='/' component={ RideSearch } />
-      <Route exact path='/' component={ CreateRide } />
+      <Route exact path='/newride' component={ CreateRide } />
       <Route path='/myrides' component={ MyRides } />
       <Route path='/profile' component={ Profile } />
     </div>
