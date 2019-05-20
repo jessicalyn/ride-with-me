@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { SearchResults } from '../../components/SearchResults/SearchResults';
 
 export class RideSearch extends Component {
   
@@ -6,6 +7,7 @@ export class RideSearch extends Component {
     return(
       <div className="ride-search-container">
         <h3>Find a Ride</h3>
+        <SearchResults />
       </div>
     )
   }

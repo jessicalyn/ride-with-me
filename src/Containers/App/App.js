@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { RideSearch } from '../RideSearch/RideSearch';
 import { CreateRide } from '../CreateRide/CreateRide';
-import { SearchResults } from '../../components/SearchResults/SearchResults';
+import { MyRides } from '../MyRides/MyRides';
 
 function App() {
   return (
@@ -15,9 +15,9 @@ function App() {
           <button>Profile</button>
         </div>
       </header>
-      <Route path='/' component={ RideSearch } />
-      <Route path='/' component={ CreateRide } />
-      <SearchResults />
+      <Route exact path='/' component={ RideSearch } />
+      <Route exact path='/' component={ CreateRide } />
+      <Route path='/myrides' component={ MyRides } />
     </div>
   );
 }
