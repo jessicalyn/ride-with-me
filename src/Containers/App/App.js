@@ -6,9 +6,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Ride With Me</h1>
-        <button>Messages</button>
-        <button>My Rides</button>
-        <button>Profile</button>
+        <div className="header-buttons">
+          <button>Messages</button>
+          <button>My Rides</button>
+          <button>Profile</button>
+        </div>
       </header>
       <RideSearch />
     </div>

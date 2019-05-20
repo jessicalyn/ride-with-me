@@ -2,6 +2,31 @@
   text-align: center;
 }
 
+header {
+  box-shadow: $box-shadow;
+  border: 2px solid black;
+  width: 100%;
+  margin: 10px auto;
+  background-color: white;
+  display: flex
+}
+
 h1 {
+  flex: 1;
   font-family: $font-title;
+}
+
+.header-buttons {
+  flex: 1;
+  
+}
+
+button {
+  height: 50px;
+  width: 100px;
+  border-radius: 10px;
+  margin: 5px;
+  font-family: $font-main;
+  font-size: 18px;
+  box-shadow: $box-shadow;
 }
