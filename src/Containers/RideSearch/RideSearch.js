@@ -12,7 +12,7 @@ export class RideSearch extends Component {
   }
   
   render() {
-    const { start_location } = this.state
+    const { start_location, end_location } = this.state
     return(
       <div className="containers ride-search-container">
         <h3>Find a Ride</h3>
@@ -25,7 +25,7 @@ export class RideSearch extends Component {
           </div>
           <div className="search-divs">
             <label>End Location</label>
-            <select className="search-drop-down" value={start_location} name="search_start_location" onChange={this.handleChange}>
+            <select className="search-drop-down" value={end_location} name="search_start_location" onChange={this.handleChange}>
               <option value="0" disable="true" select="true" default>Select a City</option>
             </select>
           </div>
