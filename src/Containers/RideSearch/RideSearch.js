@@ -25,7 +25,9 @@ export class RideSearch extends Component {
           </div>
           <div className="search-divs">
             <label>End Location</label>
-            <input></input>
+            <select className="search-drop-down" value={start_location} name="search_start_location" onChange={this.handleChange}>
+              <option value="0" disable="true" select="true" default>Select a City</option>
+            </select>
           </div>
           <div className="search-divs">
             <label>Start Date</label>
