@@ -3,7 +3,7 @@ import { fetchOptionsCreator } from '../utils/fetchOptionsCreator';
 
 export const fetchCities = () => {
   return async (dispatch) => {
-    const url = `${process.env.REACT_APP_BACKEND_URL}/api/v1/`
+    const url = `${process.env.REACT_APP_BACKEND_URL}/graphql`
     try {
       const body = '{ allCities{name} }'
       const options = fetchOptionsCreator('POST', body)
@@ -12,6 +12,7 @@ export const fetchCities = () => {
         throw Error (response.statusText)
       }
       const result = await response.json()
+      const cities = result.data.allCities
       dispatch(storeCities(cities))
     } catch(error) {
       dispatch(hasError(error.message))
