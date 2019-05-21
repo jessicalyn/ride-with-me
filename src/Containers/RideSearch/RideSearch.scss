@@ -1,6 +1,17 @@
-.ride-search-container {
-  box-shadow: $box-shadow;
-  border: 2px solid green;
-  width: 80%;
-  margin: auto;
+.search-form {
+  display: flex;
+  width: 100%;
+  align-content: space-between
+}
+
+.search-divs {
+  flex: 1;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    width: 150px;
+    height: 20px;
+  }
 }

@@ -2,6 +2,34 @@
   text-align: center;
 }
 
+header {
+  width: 100%;
+  margin: auto;
+  background-color: white;
+  display: flex
+}
+
 h1 {
+  flex: 1;
   font-family: $font-title;
+  margin: 30px;
+}
+
+.header-buttons {
+  margin: 40px;
+  flex: 1;
+}
+
+.nav-buttons {
+  margin: 10px 10px;
+  font-family: $font-main;
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+  font-weight: 700
+}
+
+.home-button {
+  text-decoration: none;
+  color: black
 }
