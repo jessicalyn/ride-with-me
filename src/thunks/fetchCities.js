@@ -1,4 +1,4 @@
-import { hasError } from '../actions';
+import { hasError, storeCities } from '../actions';
 import { fetchOptionsCreator } from '../utils/fetchOptionsCreator';
 
 export const fetchCities = () => {
