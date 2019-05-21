@@ -5,7 +5,7 @@ export const fetchCities = () => {
   return async (dispatch) => {
     const url = `${process.env.REACT_APP_BACKEND_URL}/api/v1/`
     try {
-      const body = whatevertheyneed
+      const body = '{ allCities{name} }'
       const options = fetchOptionsCreator('POST', body)
       const response = await fetch(url, options)
       if (!response.ok) {
