@@ -10,6 +10,7 @@ export class Profile extends Component {
         <h4>Email</h4>
         <h4>Phone</h4>
         <h4>Password</h4>
+        <h4>Add Image Upload?</h4>
       </div>
     )
   }
