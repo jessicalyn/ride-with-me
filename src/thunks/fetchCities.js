@@ -3,10 +3,11 @@ import { fetchOptionsCreator } from '../utils/fetchOptionsCreator';
 
 export const fetchCities = () => {
   return async (dispatch) => {
-    const url = `${process.env.REACT_APP_BACKEND_URL}/graphql`
+    const url = `${process.env.REACT_APP_BACKEND_URL}/graphql/`
     try {
-      const body = '{ allCities{name} }'
-      const options = fetchOptionsCreator('POST', body)
+      const searchParams = '{ allCities{name} }'
+      const options = fetchOptionsCreator('POST', searchParams)
+      console.log(options)
       const response = await fetch(url, options)
       if (!response.ok) {
         throw Error (response.statusText)
