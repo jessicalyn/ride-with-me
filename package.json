@@ -45,5 +45,12 @@
     "redux-devtools": "^3.5.0",
     "sass": "^1.20.1",
     "sass-loader": "^7.1.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/reducers/index.js"
+    ]
   }
 }
