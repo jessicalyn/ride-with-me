@@ -13,4 +13,16 @@ describe('actions', () => {
 
     expect(result).toEqual(expected)
   })
+
+  it('should return a type of STORE_CITIES with an array of cities', () => {
+    const cities = ["Denver", "Chicago", "San Francisco"]
+    const expected = {
+      type: 'STORE_CITIES',
+      cities
+    }
+
+    const result = actions.storeCities(cities)
+
+    expect(result).toEqual(expected)
+  })
 })
