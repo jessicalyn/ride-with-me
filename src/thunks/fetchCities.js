@@ -7,7 +7,6 @@ export const fetchCities = () => {
     try {
       const searchParams = '{ allCities{name} }'
       const options = fetchOptionsCreator('POST', searchParams)
-      console.log(options)
       const response = await fetch(url, options)
       if (!response.ok) {
         throw Error (response.statusText)
