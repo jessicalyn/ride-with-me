@@ -3,7 +3,7 @@ import { fetchOptionsCreator } from '../utils/fetchOptionsCreator';
 
 export const fetchCities = () => {
   return async (dispatch) => {
-    const url = `${process.env.REACT_APP_BACKEND_URL}/graphql/`
+    const url = 'https://ride-with-me-backend.herokuapp.com/graphql/'
     try {
       const searchParams = '{ allCities{name} }'
       const options = fetchOptionsCreator('POST', searchParams)
