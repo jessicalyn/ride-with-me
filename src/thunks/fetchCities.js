@@ -6,7 +6,7 @@ export const fetchCities = () => {
     const url = 'https://ride-with-me-backend.herokuapp.com/graphql/'
     try {
       dispatch(isLoading(true))
-      const searchParams = '{ allCities{name} }'
+      const searchParams = '{ allCities{name, id} }'
       const options = fetchOptionsCreator('POST', searchParams)
       const response = await fetch(url, options)
       if (!response.ok) {
@@ -14,6 +14,7 @@ export const fetchCities = () => {
       }
       const result = await response.json()
       const cities = result.data.allCities
+      console.log(cities)
       dispatch(isLoading(false))
       dispatch(storeCities(cities))
     } catch(error) {
