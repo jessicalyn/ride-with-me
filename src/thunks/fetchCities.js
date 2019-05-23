@@ -13,6 +13,7 @@ export const fetchCities = () => {
       }
       const result = await response.json()
       const cities = result.data.allCities
+      console.log(cities)
       dispatch(storeCities(cities))
     } catch(error) {
       dispatch(hasError(error.message))
