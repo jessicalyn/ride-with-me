@@ -15,7 +15,6 @@ export class RideSearch extends Component {
 
   displayCities = () => {
     return this.props.cities.map((city, index) => {
-      console.log("display cities")
       let cityName = city.name
       return <option key={`option-${cityName}-${index}`} value={cityName} >{cityName}</option>
     })
