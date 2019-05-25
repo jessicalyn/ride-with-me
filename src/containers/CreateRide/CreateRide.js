@@ -22,7 +22,7 @@ export class CreateRide extends Component {
 
   displayCities = () => {
     return this.props.cities.map(city => {
-      return <option key={`option-${city.name}-${city.id}`} value={city.id} >{city.name}</option>
+      return <option key={`create-${city.name}-${city.id}`} value={city.id} >{city.name}</option>
     })
   }
 
@@ -73,7 +73,10 @@ export class CreateRide extends Component {
             </div>
             <div>
               <label>End City</label>
-              <input className="mb2" type="text" name="endCityId" value={endCityId} onChange={this.handleChange} />
+              <select className="search-drop-down" value={endCityId} name="endCityId" onChange={this.handleChange}>
+                <option value="0" disable="true" select="true" default>Select a City</option>
+                {this.displayCities()}
+              </select>
             </div>
             <div>
               <label>Start Date</label>
