@@ -5,19 +5,26 @@ import gql from 'graphql-tag';
 
 export class CreateRide extends Component {
   state = {
-    driverId: "",
-    startCityId: "",
-    endCityId: "",
+    driverId: 1,
+    startCityId: 0,
+    endCityId: 0,
     description: "",
-    mileage: "",
-    price: "",
-    totalSeats: "",
-    departureTime: ""
+    mileage: 0,
+    price: 0,
+    totalSeats: 0,
+    departureTime: "" 
   }
 
   handleChange = (e) => {
     const { name, value } = e.target
-    this.setState({ [name]: value })
+    if (name === "price") {
+      const priceNum = parseFloat(value)
+      this.setState({ price: priceNum })
+    } else {
+      this.setState({ [name]: value })
+    }
+    console.log(this.state)
+    console.log(typeof(this.state.price))
   }
 
   displayCities = () => {
@@ -50,14 +57,9 @@ export class CreateRide extends Component {
           price: $price,
           totalSeats: $totalSeats,
           departureTime: $departureTime) {
-      driverId
-      startCityId
-      endCityId
-      description
-      mileage
-      price
-      totalSeats
-      departureTime
+      ride {
+        id
+      }
       }}`
     return (
       <div className="create-ride-container">
@@ -80,11 +82,11 @@ export class CreateRide extends Component {
             </div>
             <div>
               <label>Start Date</label>
-              <input className="mb2" type="text" name="departureTime" value={departureTime} onChange={this.handleChange} />
+              <input className="mb2" type="date" name="departureTime" value={departureTime} onChange={this.handleChange} />
             </div>
             <div>
               <label>Compensation</label>
-              <input className="mb2" type="text" name="price" value={price} onChange={this.handleChange} />
+              <input className="mb2" type="number" name="price" value={price} onChange={this.handleChange} />
             </div>
             <div>
               <label>Available Seats</label>
