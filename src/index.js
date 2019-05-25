@@ -10,13 +10,34 @@ import { rootReducer } from './reducers';
 import './index.scss';
 import App from './containers/App/App';
 
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+import { gql } from "apollo-boost";
+
+const client = new ApolloClient({
+  uri: "https://ride-with-me-backend.herokuapp.com/graphql/"
+});
+
+client.query({
+    query: gql` 
+    {
+      allCities {
+        name
+      }
+    }
+  `
+  })
+  .then(result => console.log(result));
+
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 const router = (
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ApolloProvider>
   </Provider>
 );
 
