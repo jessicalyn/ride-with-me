@@ -22,12 +22,14 @@ export class App extends Component {
         <header className="App-header">
           <Link to='/' className="home-button"><h1>Ride With Me</h1></Link>
           <div className="header-buttons">
+            <Link to='/findride' className="nav-buttons">Find a Ride</Link>
             <Link to='/newride' className="nav-buttons">Create a Ride</Link>
             <Link to='/myrides' className="nav-buttons">My Rides</Link>
             <Link to='/profile' className="nav-buttons">Profile</Link>
           </div>
         </header>
         <Route exact path='/' component={ RideSearch } />
+        <Route exact path='/findride' component={ RideSearch } />
         <Route exact path='/newride' component={ CreateRide } />
         <Route path='/myrides' component={ MyRides } />
         <Route path='/profile' component={ Profile } />
