@@ -37,4 +37,16 @@ describe('actions', () => {
 
     expect(result).toEqual(expected)
   })
+
+  it('should return a type of STORE_RIDES with an array of rides', () => {
+    const rides = [{ id: 1, description: "Let's ride!" }, { id: 2, description: "Stopping at every diner!" }]
+    const expected = {
+      type: 'STORE_RIDES',
+      rides
+    }
+
+    const result = actions.storeRides(rides)
+
+    expect(result).toEqual(expected)
+  })
 })

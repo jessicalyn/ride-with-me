@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
+import { Query } from 'react-apollo';
+import { gql } from 'apollo-boost';
+import { Link } from 'react-router-dom';
 
 export default class MyRides extends Component {
   constructor() {
@@ -43,6 +44,7 @@ export default class MyRides extends Component {
                   </div>
                   <p>Driver { driver.firstName } is requesting { price } per seat for this ride.</p>
                   <p>Ride Description: { description }</p>
+                  <Link to='/rides/:id'>See Ride Info</Link>
                 </div>
                 ));
               }}

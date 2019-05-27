@@ -5,6 +5,7 @@ import RideSearch from '../RideSearch/RideSearch';
 import CreateRide from '../CreateRide/CreateRide';
 import MyRides from '../MyRides/MyRides';
 import { Profile } from '../Profile/Profile';
+import { RideInfo } from '../RideInfo/RideInfo';
 import { fetchCities } from '../../thunks/fetchCities';
 
 export class App extends Component {
@@ -28,6 +29,7 @@ export class App extends Component {
         <Route exact path='/newride' component={ CreateRide } />
         <Route path='/myrides' component={ MyRides } />
         <Route path='/profile' component={ Profile } />
+        <Route path='/rides/:id' component={ RideInfo } />
       </div>
     );
   }

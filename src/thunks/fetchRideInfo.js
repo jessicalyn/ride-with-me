@@ -1,7 +1,7 @@
-import { hasError, storeCities, isLoading } from '../actions';
+import { hasError, storeRides, isLoading } from '../actions';
 import { fetchOptionsCreator } from '../utils/fetchOptionsCreator';
 
-export const fetchCities = () => {
+export const fetchRideInfo = () => {
   return async (dispatch) => {
     const url = 'https://ride-with-me-backend.herokuapp.com/graphql/'
     try {
@@ -14,6 +14,7 @@ export const fetchCities = () => {
       }
       const result = await response.json()
       const cities = result.data.allCities
+      console.log(cities)
       dispatch(isLoading(false))
       dispatch(storeCities(cities))
     } catch(error) {
