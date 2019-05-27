@@ -4,7 +4,8 @@ import { GoogleLogin } from 'react-google-login';
 export class Login extends Component {
 
   responseGoogle = (response) => {
-    console.log(response);
+    console.log(response)
+    console.log(response.hg.id_token);
   }
 
   render() {
