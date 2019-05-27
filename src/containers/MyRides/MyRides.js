@@ -13,19 +13,15 @@ export default class MyRides extends Component {
   render() {
     return(
       <div className="my-rides-container">
-        <h3>My Rides</h3>
+        <h2>My Rides</h2>
         <Query
           query={gql`
             {
-              availableRides { id description mileage price totalSeats departureTime status
+              availableRides { id description price totalSeats departureTime status
                 driver { id firstName lastName }
-                ridepassengerSet {
-                  passenger { id firstName lastName }
-                }
-                endCity { id name
-                }
-                startCity { id name
-                }
+                ridepassengerSet { passenger { id firstName lastName } }
+                endCity { id name }
+                startCity { id name }
               }
             }
           `}
@@ -35,16 +31,18 @@ export default class MyRides extends Component {
           if (error) return <p>Error :(</p>;
             
             return data.availableRides.map(({
-              id, description, mileage, price, totalSeats, departureTime, status, driver }) => (
+              id, description, price, totalSeats, departureTime, status, driver, endCity, startCity }) => (
                 <div key={id} className="ride-container">
-                  <p>{ id }</p>
-                  <p>{ description }</p>
-                  <p>{ mileage }</p>
-                  <p>{ price }</p>
-                  <p>{ totalSeats }</p>
-                  <p>{ departureTime }</p>
-                  <p>{ status }</p>
-                  <p>{ driver }</p>
+                  <div className="first-line">
+                    <p>{ startCity.name } to { endCity.name }</p>
+                    <p>{ status.toUpperCase() }</p>
+                  </div>
+                  <div className="first-line">
+                    <p>Departure Date: { departureTime }</p>
+                    <p>Seats Available: { totalSeats }</p>
+                  </div>
+                  <p>Driver { driver.firstName } is requesting { price } per seat for this ride.</p>
+                  <p>Ride Description: { description }</p>
                 </div>
                 ));
               }}

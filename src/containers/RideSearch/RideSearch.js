@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SearchResults } from '../../components/SearchResults/SearchResults';
 import { Loader } from '../../components/Loader/Loader';
+import { Query } from "react-apollo";
+import { gql } from "apollo-boost";
 
 export class RideSearch extends Component {
   constructor() {
@@ -31,6 +32,23 @@ export class RideSearch extends Component {
   
   render() {
     const { start_location, end_location, start_date } = this.state
+    const RIDE_SEARCH = gql`
+      query SearchRidesByCities($startCityId: Int!, $endCityId: Int!, $departureTime: Date!) {
+        searchRidesByCities(startCityId:$startCityId, endCityId:$endCityId, departureTime:$departureTime) {
+          id
+          description
+          mileage
+          price
+          totalSeats
+          departureTime
+          status
+          driver { id firstName lastName }
+          endCity { id name }
+          startCity { id name }
+        }
+      }
+    `;
+
     return(
       <div className="containers ride-search-container">
         <h3>Find a Ride</h3>
@@ -57,7 +75,7 @@ export class RideSearch extends Component {
             <button>Search</button>
           </form>
         : <Loader /> }
-        <SearchResults />
+        
       </div>
     )
   }
@@ -68,3 +86,29 @@ export const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(RideSearch)
+
+// <div>
+//           <Query query={RIDE_SEARCH} variables={{ 
+//             "startCityId": start_location,
+//             "endCityId": end_location,
+//             "departureTime": start_date
+//           }}
+//           >
+//             {(searchRidesByCities, { data }) => {
+                
+//                 return data.searchRidesByCities.map(({
+//                   id, description, mileage, price, totalSeats, departureTime, status, driver }) => (
+//                     <div key={id} className="ride-container">
+//                       <p>{ id }</p>
+//                       <p>{ description }</p>
+//                       <p>{ mileage }</p>
+//                       <p>{ price }</p>
+//                       <p>{ totalSeats }</p>
+//                       <p>{ departureTime }</p>
+//                       <p>{ status }</p>
+//                       <p>{ driver }</p>
+//                     </div>
+//                     ));
+//                   }}
+//           </Query>
+//         </div>
