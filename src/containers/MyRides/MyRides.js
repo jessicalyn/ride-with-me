@@ -17,33 +17,14 @@ export default class MyRides extends Component {
         <Query
           query={gql`
             {
-              availableRides {
-                id
-                description
-                mileage
-                price
-                totalSeats
-                departureTime
-                status
-                driver {
-                  id
-                  firstName
-                  lastName
-                }
+              availableRides { id description mileage price totalSeats departureTime status
+                driver { id firstName lastName }
                 ridepassengerSet {
-                  passenger {
-                    id
-                    firstName
-                    lastName
-                  }
+                  passenger { id firstName lastName }
                 }
-                endCity {
-                  id
-                  name
+                endCity { id name
                 }
-                startCity {
-                  id
-                  name
+                startCity { id name
                 }
               }
             }
@@ -61,6 +42,9 @@ export default class MyRides extends Component {
                   <p>{ mileage }</p>
                   <p>{ price }</p>
                   <p>{ totalSeats }</p>
+                  <p>{ departureTime }</p>
+                  <p>{ status }</p>
+                  <p>{ driver }</p>
                 </div>
                 ));
               }}
