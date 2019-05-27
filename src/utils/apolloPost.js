@@ -60,32 +60,32 @@ const CreateRide = () => {
 
 
 
-// import React from 'react';
-// import { Query } from "react-apollo";
-// import { gql } from "apollo-boost";
-// import { storeCities } from '../actions';
+import React from 'react';
+import { Query } from "react-apollo";
+import { gql } from "apollo-boost";
+import { storeCities } from '../actions';
 
-// export const ApolloCities = () => (
-//   <Query
-//     query={gql`
-//       {
-//         allCities {
-//           name
-//           state
-//         }
-//       }
-//     `}
-//   >
-//     {({ loading, error, data }) => {
-//       if (loading) return <p>Loading...</p>;
-//       if (error) return <p>Error :(</p>;
+export const ApolloCities = () => (
+  <Query
+    query={gql`
+      {
+        allCities {
+          name
+          state
+        }
+      }
+    `}
+  >
+    {({ loading, error, data }) => {
+      if (loading) return <p>Loading...</p>;
+      if (error) return <p>Error :(</p>;
 
-//       return storeCities(data.allCities)
-//       // data.allCities.map(({ name, state }) => (
-//       //   <div key={name}>
-//       //     <p>{name}: {state}</p>
-//       //   </div>
-//       // ));
-//     }}
-//   </Query>
-// );
+      return storeCities(data.allCities)
+      // data.allCities.map(({ name, state }) => (
+      //   <div key={name}>
+      //     <p>{name}: {state}</p>
+      //   </div>
+      // ));
+    }}
+  </Query>
+);

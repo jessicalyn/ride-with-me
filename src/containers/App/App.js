@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import RideSearch from '../RideSearch/RideSearch';
 import CreateRide from '../CreateRide/CreateRide';
-import { MyRides } from '../MyRides/MyRides';
+import MyRides from '../MyRides/MyRides';
 import { Profile } from '../Profile/Profile';
 import { fetchCities } from '../../thunks/fetchCities';
 
