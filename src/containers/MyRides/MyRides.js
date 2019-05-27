@@ -44,7 +44,8 @@ export default class MyRides extends Component {
                   </div>
                   <p>Driver { driver.firstName } is requesting { price } per seat for this ride.</p>
                   <p>Ride Description: { description }</p>
-                  <Link to='/rides/:id'>See Ride Info</Link>
+                  <p>{id}</p>
+                  <Link to={`/rides/${id}`} key={id}>See Ride Info</Link>
                 </div>
                 ));
               }}

@@ -31,15 +31,23 @@ export class App extends Component {
         <Route exact path='/newride' component={ CreateRide } />
         <Route path='/myrides' component={ MyRides } />
         <Route path='/profile' component={ Profile } />
-        <Route path='/rides/:id' component={ RideInfo } />
+        <Route path='/rides/:id' render={({ match }) => {
+          const currentRide = this.props.rides.find(ride => parseInt(ride.id) === parseInt(match.params.id))
+          if(currentRide === undefined) return <p>Error</p>
+          return <RideInfo match={match} {...currentRide} />
+        }} />
       </div>
     );
   }
 }
+
+export const mapStateToProps = (state) => ({
+  rides: state.rides
+})
 
 export const mapDispatchToProps = (dispatch) => ({
   fetchCities: () => dispatch(fetchCities()),
   fetchRideInfo: () => dispatch(fetchRideInfo())
 })
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
