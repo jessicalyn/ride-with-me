@@ -7,11 +7,13 @@ import MyRides from '../MyRides/MyRides';
 import { Profile } from '../Profile/Profile';
 import { RideInfo } from '../RideInfo/RideInfo';
 import { fetchCities } from '../../thunks/fetchCities';
+import { fetchRideInfo } from '../../thunks/fetchRideInfo';
 
 export class App extends Component {
 
   componentDidMount() {
     this.props.fetchCities()
+    this.props.fetchRideInfo()
   }
 
   render() {
@@ -36,7 +38,8 @@ export class App extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  fetchCities: () => dispatch(fetchCities())
+  fetchCities: () => dispatch(fetchCities()),
+  fetchRideInfo: () => dispatch(fetchRideInfo())
 })
 
 export default connect(null, mapDispatchToProps)(App)
