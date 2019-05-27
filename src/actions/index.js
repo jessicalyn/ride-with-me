@@ -17,3 +17,8 @@ export const storeRides = (rides) => ({
   type: 'STORE_RIDES',
   rides
 })
+
+export const storeSearchResults = (searchResults) => ({
+  type: 'STORE_SEARCH_RESULTS',
+  searchResults
+})
