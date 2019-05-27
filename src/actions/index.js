@@ -12,3 +12,13 @@ export const isLoading = (boolean) => ({
   type: 'IS_LOADING',
   boolean
 })
+
+export const storeRides = (rides) => ({
+  type: 'STORE_RIDES',
+  rides
+})
+
+export const storeSearchResults = (searchResults) => ({
+  type: 'STORE_SEARCH_RESULTS',
+  searchResults
+})

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SearchResults } from '../../components/SearchResults/SearchResults';
 import { Loader } from '../../components/Loader/Loader';
+import { fetchRideSearch } from '../../thunks/fetchRideSearch';
+import { SearchResults } from '../../components/SearchResults/SearchResults';
 
 export class RideSearch extends Component {
   constructor() {
@@ -19,8 +20,15 @@ export class RideSearch extends Component {
   }
 
   handleSubmit = (e) => {
+    let queryVariables
+    const { start_location, end_location, start_date } = this.state
     e.preventDefault()
-    console.log(this.state)
+    if(start_date) {
+      queryVariables = `{searchRidesByCities(startCityId:${start_location}, endCityId: ${end_location}, departureTime: \"${start_date}\"){ id description mileage price totalSeats departureTime status driver { id firstName lastName } endCity { id name } startCity { id name }}}`
+    } else {
+      queryVariables = `{searchRidesByCities(startCityId:${start_location}, endCityId: ${end_location}){ id description mileage price totalSeats departureTime status driver { id firstName lastName } endCity { id name } startCity { id name }}}`
+    }
+    this.props.fetchRideSearch(queryVariables)
   }
 
   displayCities = () => {
@@ -28,9 +36,22 @@ export class RideSearch extends Component {
       return <option key={`option-${city.name}-${city.id}`} value={city.id} >{city.name}</option>
     })
   }
+
+  sendJoinRequest = (id) => {
+    console.log(id)
+  }
   
   render() {
     const { start_location, end_location, start_date } = this.state
+    const { searchResults } = this.props
+    let ridesToDisplay
+
+    if(searchResults) {
+      ridesToDisplay = searchResults.map(ride => {
+        console.log(ride)
+        return <SearchResults key={ride.id} {...ride} sendJoinRequest={this.sendJoinRequest} /> })
+    }
+
     return(
       <div className="containers ride-search-container">
         <h3>Find a Ride</h3>
@@ -57,14 +78,19 @@ export class RideSearch extends Component {
             <button>Search</button>
           </form>
         : <Loader /> }
-        <SearchResults />
+        { ridesToDisplay }
       </div>
     )
   }
 }
 
 export const mapStateToProps = (state) => ({
-  cities: state.cities
+  cities: state.cities,
+  searchResults: state.searchResults
 })
 
-export default connect(mapStateToProps)(RideSearch)
+export const mapDispatchToProps = (dispatch) => ({
+  fetchRideSearch: (queryVariables) => dispatch(fetchRideSearch(queryVariables))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(RideSearch)

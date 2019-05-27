@@ -5,7 +5,7 @@ export class Profile extends Component {
   render() {
     return(
       <div className="containers ride-search-container">
-        <h3>My Profile</h3>
+        <h2>My Profile</h2>
         <h4>Name</h4>
         <h4>Email</h4>
         <h4>Phone</h4>
