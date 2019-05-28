@@ -14,11 +14,12 @@ export class Login extends Component {
     }
   }
 
-  loginUser = async (response) => {
+  googleLogin = async (response) => {
     console.log(response)
     const { tokenId, profileObj } = response
     await this.setState({ firstName: profileObj.familyName, lastName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
     console.log("ready for mutation", this.state)
+    this.props.loginUser()
     //send backend endpoint response.tokenId and profileObj (givenName, familyName, email) to login user
   }
 
@@ -42,7 +43,7 @@ export class Login extends Component {
         <GoogleLogin
           clientId="716984648143-q0uo1263pr96hegug4iqlotqslidqu9p.apps.googleusercontent.com"
           buttonText="Login"
-          onSuccess={this.loginUser}
+          onSuccess={this.googleLogin}
           onFailure={this.tryAgain}
           cookiePolicy={'single_host_origin'}
         />
@@ -53,7 +54,8 @@ export class Login extends Component {
             "lastName": lastName
           }}>
             {(loginUser, { data, loading, error }) => console.log(data)}
-          </Mutation> }
+          </Mutation>
+        }
       </div>
     )
   }
