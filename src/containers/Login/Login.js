@@ -14,29 +14,11 @@ export class Login extends Component {
     }
   }
 
-  loginMutation = () => {
-    const { firstName, lastName, email } = this.state
-    const LOGIN_USER = gql`
-      mutation($email: String!, $firstName: String!, $lastName: String!) {
-        loginUser(email: $email, firstName: $firstName, lastName: $lastName) {
-          user { id firstName lastName email uuid }
-        }
-      }`
-
-    return <Mutation mutation={LOGIN_USER} variables={{ 
-      "email": email,
-      "firstName": firstName,
-      "lastName": lastName
-    }}>
-      {(loginUser, { data, loading, error }) => console.log(data)}
-    </Mutation>
-  }
-
   loginUser = async (response) => {
     console.log(response)
     const { tokenId, profileObj } = response
     await this.setState({ firstName: profileObj.familyName, lastName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
-    this.loginMutation()
+    console.log("ready for mutation", this.state)
     //send backend endpoint response.tokenId and profileObj (givenName, familyName, email) to login user
   }
 
@@ -45,6 +27,14 @@ export class Login extends Component {
   }
 
   render() {
+    console.log("render")
+    const { firstName, lastName, email } = this.state
+    const LOGIN_USER = gql`
+      mutation($email: String!, $firstName: String!, $lastName: String!) {
+        loginUser(email: $email, firstName: $firstName, lastName: $lastName) {
+          user { id firstName lastName email uuid }
+        }
+      }`
     return(
       <div className="containers">
         <h2>Login</h2>
@@ -56,7 +46,14 @@ export class Login extends Component {
           onFailure={this.tryAgain}
           cookiePolicy={'single_host_origin'}
         />
-        {this.loginMutation}
+        { email && 
+          <Mutation mutation={LOGIN_USER} variables={{ 
+            "email": email,
+            "firstName": firstName,
+            "lastName": lastName
+          }}>
+            {(loginUser, { data, loading, error }) => console.log(data)}
+          </Mutation> }
       </div>
     )
   }
