@@ -15,7 +15,6 @@ export class RideInfo extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { driver, endCity, startCity, status, ridepassengerSet } = this.props
     const ridePassengers = ridepassengerSet.map(passenger => {
       return <p>{passenger.firstName}</p>

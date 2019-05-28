@@ -23,8 +23,6 @@ export class CreateRide extends Component {
     } else {
       this.setState({ [name]: value })
     }
-    console.log(this.state)
-    console.log(typeof(this.state.price))
   }
 
   displayCities = () => {

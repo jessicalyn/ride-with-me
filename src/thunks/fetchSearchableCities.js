@@ -13,14 +13,9 @@ export const fetchSearchableCities = () => {
         throw Error (response.statusText)
       }
       const result = await response.json()
-      const cities = Object.values(result.data.searchableCities)
-      console.log("cities", cities)
-      // const startCities = result.data.searchableCities.startCities
-      // const endCities = result.data.searchableCities.endCities
-      // console.log(startCities)
-      // console.log(endCities)
+      const searchableCities = result.data.searchableCities
       dispatch(isLoading(false))
-      dispatch(storeSearchableCities(cities))
+      dispatch(storeSearchableCities(searchableCities))
     } catch(error) {
       dispatch(isLoading(false))
       dispatch(hasError(error.message))
