@@ -32,10 +32,11 @@ export class Login extends Component {
     </Mutation>
   }
 
-  loginUser = (response) => {
+  loginUser = async (response) => {
     console.log(response)
     const { tokenId, profileObj } = response
-    this.setState({ firstName: profileObj.familyName, lastName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
+    await this.setState({ firstName: profileObj.familyName, lastName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
+    this.loginMutation()
     //send backend endpoint response.tokenId and profileObj (givenName, familyName, email) to login user
   }
 
