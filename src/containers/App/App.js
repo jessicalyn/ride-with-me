@@ -6,6 +6,8 @@ import CreateRide from '../CreateRide/CreateRide';
 import MyRides from '../MyRides/MyRides';
 import { Profile } from '../Profile/Profile';
 import { RideInfo } from '../RideInfo/RideInfo';
+import { Login } from '../Login/Login';
+import { Callback } from '../Callback/Callback';
 import { fetchCities } from '../../thunks/fetchCities';
 import { fetchRideInfo } from '../../thunks/fetchRideInfo';
 
@@ -38,6 +40,8 @@ export class App extends Component {
           if(currentRide === undefined) return <p>Error</p>
           return <RideInfo match={match} {...currentRide} />
         }} />
+        <Route path='/login' component={ Login } />
+        <Route path='/callback' component={ Callback } />
       </div>
     );
   }
@@ -49,7 +53,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   fetchCities: () => dispatch(fetchCities()),
-  fetchRideInfo: () => dispatch(fetchRideInfo())
+  fetchRideInfo: () => dispatch(fetchRideInfo()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

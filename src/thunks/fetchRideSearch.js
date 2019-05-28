@@ -8,7 +8,6 @@ export const fetchRideSearch = (queryVariables) => {
       dispatch(isLoading(true))
       const options = fetchOptionsCreator('POST', queryVariables)
       const response = await fetch(url, options)
-      console.log(options.body)
       if (!response.ok) {
         throw Error (response.statusText)
       }

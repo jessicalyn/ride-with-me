@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import { GoogleLogout } from 'react-google-login';
 
 export class Profile extends Component {
+
+  logout = () => {
+    console.log("logout user")
+    //erase user info in redux
+  }
 
   render() {
     return(
@@ -11,6 +17,11 @@ export class Profile extends Component {
         <h4>Phone</h4>
         <h4>Password</h4>
         <h4>Add Image Upload?</h4>
+        <GoogleLogout
+          buttonText="Logout"
+          onLogoutSuccess={this.logout}
+        >
+        </GoogleLogout>
       </div>
     )
   }

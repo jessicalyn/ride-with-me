@@ -22,3 +22,8 @@ export const storeSearchResults = (searchResults) => ({
   type: 'STORE_SEARCH_RESULTS',
   searchResults
 })
+
+export const storeSearchableCities = (searchableCities) => ({
+  type: 'STORE_SEARCHABLE_CITIES',
+  searchableCities
+})

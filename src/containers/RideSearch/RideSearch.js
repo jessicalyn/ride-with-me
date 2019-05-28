@@ -48,7 +48,6 @@ export class RideSearch extends Component {
 
     if(searchResults) {
       ridesToDisplay = searchResults.map(ride => {
-        console.log(ride)
         return <SearchResults key={ride.id} {...ride} sendJoinRequest={this.sendJoinRequest} /> })
     }
 
@@ -90,7 +89,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  fetchRideSearch: (queryVariables) => dispatch(fetchRideSearch(queryVariables))
+  fetchRideSearch: (queryVariables) => dispatch(fetchRideSearch(queryVariables)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RideSearch)
