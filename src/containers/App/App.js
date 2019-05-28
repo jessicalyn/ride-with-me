@@ -53,7 +53,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   fetchCities: () => dispatch(fetchCities()),
-  fetchRideInfo: () => dispatch(fetchRideInfo())
+  fetchRideInfo: () => dispatch(fetchRideInfo()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
