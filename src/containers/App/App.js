@@ -6,7 +6,7 @@ import CreateRide from '../CreateRide/CreateRide';
 import MyRides from '../MyRides/MyRides';
 import { Profile } from '../Profile/Profile';
 import { RideInfo } from '../RideInfo/RideInfo';
-import { Login } from '../Login/Login';
+import Login from '../Login/Login';
 import { Callback } from '../Callback/Callback';
 import { fetchCities } from '../../thunks/fetchCities';
 import { fetchRideInfo } from '../../thunks/fetchRideInfo';

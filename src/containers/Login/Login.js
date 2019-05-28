@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
-import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
+import { mutateLogin } from '../../thunks/mutateLogin';
 
 export class Login extends Component {
   constructor() {
@@ -15,12 +15,12 @@ export class Login extends Component {
   }
 
   googleLogin = async (response) => {
+    const { firstName, lastName, email } = this.state
     console.log(response)
     const { tokenId, profileObj } = response
     await this.setState({ firstName: profileObj.familyName, lastName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
-    console.log("ready for mutation", this.state)
-    this.props.loginUser()
-    //send backend endpoint response.tokenId and profileObj (givenName, familyName, email) to login user
+    const variables = `{"email":${email},"firstName":${firstName},"lastName":${lastName}}`
+    this.props.mutateLogin(variables)
   }
 
   tryAgain = (response) => {
@@ -28,14 +28,6 @@ export class Login extends Component {
   }
 
   render() {
-    console.log("render")
-    const { firstName, lastName, email } = this.state
-    const LOGIN_USER = gql`
-      mutation($email: String!, $firstName: String!, $lastName: String!) {
-        loginUser(email: $email, firstName: $firstName, lastName: $lastName) {
-          user { id firstName lastName email uuid }
-        }
-      }`
     return(
       <div className="containers">
         <h2>Login</h2>
@@ -47,16 +39,13 @@ export class Login extends Component {
           onFailure={this.tryAgain}
           cookiePolicy={'single_host_origin'}
         />
-        { email && 
-          <Mutation mutation={LOGIN_USER} variables={{ 
-            "email": email,
-            "firstName": firstName,
-            "lastName": lastName
-          }}>
-            {(loginUser, { data, loading, error }) => console.log(data)}
-          </Mutation>
-        }
       </div>
     )
   }
 }
+
+export const mapDispatchToProps = (dispatch) => ({
+  mutateLogin: (variables) => dispatch(mutateLogin(variables))
+})
+
+export default connect(null, mapDispatchToProps)(Login)
