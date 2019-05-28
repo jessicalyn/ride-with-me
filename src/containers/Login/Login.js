@@ -14,11 +14,15 @@ export class Login extends Component {
     }
   }
 
-  googleLogin = async (response) => {
-    const { firstName, lastName, email } = this.state
+  googleLogin = (response) => {
     console.log(response)
     const { tokenId, profileObj } = response
-    await this.setState({ firstName: profileObj.familyName, lastName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
+    this.setState({ firstName: profileObj.familyName, lastName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
+    this.userLogin()
+  }
+  
+  userLogin = () => {
+    const { firstName, lastName, email } = this.state
     const variables = `{"email":${email},"firstName":${firstName},"lastName":${lastName}}`
     this.props.mutateLogin(variables)
   }
