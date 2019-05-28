@@ -35,7 +35,7 @@ export class Login extends Component {
   loginUser = (response) => {
     console.log(response)
     const { tokenId, profileObj } = response
-    this.setState({ first_name: profileObj.familyName, last_name: profileObj.givenName, email: profileObj.email, googleId: tokenId })
+    this.setState({ firstName: profileObj.familyName, lastName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
     //send backend endpoint response.tokenId and profileObj (givenName, familyName, email) to login user
   }
 
