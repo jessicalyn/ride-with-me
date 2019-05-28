@@ -23,7 +23,7 @@ export class Login extends Component {
   
   userLogin = () => {
     const { firstName, lastName, email } = this.state
-    const variables = `{"email":${email},"firstName":${firstName},"lastName":${lastName}}`
+    const variables = `{"email":"${email}","firstName":"${firstName}","lastName":"${lastName}"}`
     this.props.mutateLogin(variables)
   }
 
