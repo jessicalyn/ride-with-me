@@ -77,6 +77,7 @@ export class RideSearch extends Component {
             <button>Search</button>
           </form>
         : <Loader /> }
+        { this.props.isLoading && <Loader /> }
         { ridesToDisplay }
       </div>
     )
@@ -85,7 +86,8 @@ export class RideSearch extends Component {
 
 export const mapStateToProps = (state) => ({
   cities: state.cities,
-  searchResults: state.searchResults
+  searchResults: state.searchResults,
+  isLoading: state.isLoading
 })
 
 export const mapDispatchToProps = (dispatch) => ({
