@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { Query, Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import { Loader } from '../../components/Loader/Loader';

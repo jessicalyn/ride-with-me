@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
+import { Mutation } from 'react-apollo';
+import { gql } from 'apollo-boost';
 import { connect } from 'react-redux';
+import { Loader } from '../../components/Loader/Loader';
+
+const DELETE_RIDER = gql`
+    mutation($passengerUuid: String! $rideId: Int!){
+      deleteRidePassenger(passengerUuid:$passengerUuid, rideId:$rideId){
+        ok
+        message
+      }
+    }
+  `
 
 export class RideInfo extends Component {
   constructor({ driver, ridepassengerSet }) {
@@ -19,7 +31,9 @@ export class RideInfo extends Component {
   }
 
   render() {
-    const { driver, endCity, startCity, status, ridepassengerSet } = this.props
+    console.log(this.props)
+    const { id, driver, endCity, startCity, status, ridepassengerSet, user } = this.props
+    const passengerUuid = user.uuid
     const ridePassengers = ridepassengerSet.map((passenger, index) => {
       return <p key={index}>{passenger.passenger.firstName}</p>
     })
@@ -31,6 +45,19 @@ export class RideInfo extends Component {
         <p>{startCity.name} to {endCity.name}</p>
         <p>Ride Status: {status}</p>
         {ridePassengers && <div>Passenger List: {ridePassengers}</div>}
+        <Mutation mutation={DELETE_RIDER} variables={{ 
+          "passengerUuid": passengerUuid,
+          "rideId": id
+        }}>
+          {(deleteRidePassenger, { data, loading, error }) => {
+            if (loading) return <Loader />
+            if (error) return <div>Error: { error }</div>
+            if (!data) return <button onClick={deleteRidePassenger}>Cancel Ride</button>
+            if (data) return <h3>Ride Cancelled!</h3>
+          }
+        }
+        </Mutation>
+        
       </div>
     )
   }
