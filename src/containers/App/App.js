@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import RideSearch from '../RideSearch/RideSearch';
 import CreateRide from '../CreateRide/CreateRide';
 import MyRides from '../MyRides/MyRides';
@@ -48,7 +48,8 @@ export class App extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  rides: state.rides
+  rides: state.rides,
+  user: state.user
 })
 
 export const mapDispatchToProps = (dispatch) => ({

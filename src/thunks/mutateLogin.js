@@ -1,4 +1,4 @@
-import { hasError, isLoading } from '../actions';
+import { hasError, loginUser, isLoading } from '../actions';
 
 export const mutateLogin = (variables) => {
   return async (dispatch) => {
@@ -7,15 +7,16 @@ export const mutateLogin = (variables) => {
       dispatch(isLoading(true))
       const urlVariables = url + variables
       const options = { method: 'POST' }
-      console.log("url correct?", urlVariables)
       const response = await fetch(urlVariables, options)
       if (!response.ok) {
         throw Error (response.statusText)
       }
       const result = await response.json()
-      console.log(result)
+      const user = result.data.loginUser.user
+      
+      console.log("mutateLogin", user)
       dispatch(isLoading(false))
-      // dispatch(storeSearchableCities(searchableCities))
+      dispatch(loginUser(user))
     } catch(error) {
       dispatch(isLoading(false))
       dispatch(hasError(error.message))

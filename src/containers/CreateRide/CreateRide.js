@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Redirect } from 'react-router-dom';
 
 export class CreateRide extends Component {
   state = {
@@ -62,6 +63,7 @@ export class CreateRide extends Component {
     return (
       <div className="create-ride-container">
         <div>
+          { !this.props.user && <Redirect to='/login' />}
           <h3>Create a Ride</h3>
           <form>
             <div>

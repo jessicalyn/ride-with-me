@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleLogout } from 'react-google-login';
+import { Redirect } from 'react-router-dom';
 
 export class Profile extends Component {
 
@@ -11,6 +12,7 @@ export class Profile extends Component {
   render() {
     return(
       <div className="containers ride-search-container">
+        { !this.props.user && <Redirect to='/login' />}
         <h2>My Profile</h2>
         <h4>Name</h4>
         <h4>Email</h4>

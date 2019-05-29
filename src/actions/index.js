@@ -27,3 +27,8 @@ export const storeSearchableCities = (searchableCities) => ({
   type: 'STORE_SEARCHABLE_CITIES',
   searchableCities
 })
+
+export const loginUser = (user) => ({
+  type: 'LOGIN_USER',
+  user
+})

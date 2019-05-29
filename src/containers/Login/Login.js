@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import { mutateLogin } from '../../thunks/mutateLogin';
+import { Redirect } from 'react-router-dom';
+import { loginUser } from '../../actions';
 
 export class Login extends Component {
   constructor() {
@@ -28,13 +30,22 @@ export class Login extends Component {
   }
 
   tryAgain = (response) => {
-    console.log("login didn't work")
+    console.log("DELETE THE FAKE USER")
+    const user = { 
+      email: "jessicalynhansen@gmail.com", 
+      firstName: "Hansen",
+      id: "12",
+      lastName: "Jessica",
+      uuid: "a710eedc-819c-11e9-8f08-5a5d1f8d1912" 
+    }
+    this.props.loginUser(user)
+    console.log("google login didn't work")
   }
 
   render() {
     return(
       <div className="containers">
-        <h2>Login</h2>
+        <h2>Please Login to Continue</h2>
         <p>Signin with Google to Create an Account or Login</p>
         <GoogleLogin
           clientId="716984648143-q0uo1263pr96hegug4iqlotqslidqu9p.apps.googleusercontent.com"
@@ -43,13 +54,19 @@ export class Login extends Component {
           onFailure={this.tryAgain}
           cookiePolicy={'single_host_origin'}
         />
+        { this.props.user && <Redirect to='/' /> }
       </div>
     )
   }
 }
 
-export const mapDispatchToProps = (dispatch) => ({
-  mutateLogin: (variables) => dispatch(mutateLogin(variables))
+export const mapStateToProps = (state) => ({
+  user: state.user
 })
 
-export default connect(null, mapDispatchToProps)(Login)
+export const mapDispatchToProps = (dispatch) => ({
+  mutateLogin: (variables) => dispatch(mutateLogin(variables)),
+  loginUser: (user) => dispatch(loginUser(user))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

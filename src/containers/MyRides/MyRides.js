@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class MyRides extends Component {
   constructor() {
@@ -14,6 +14,7 @@ export default class MyRides extends Component {
   render() {
     return(
       <div className="my-rides-container">
+        { !this.props.user && <Redirect to='/login' />}
         <h2>My Rides</h2>
         <Query
           query={gql`
