@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import { Query, Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import { Loader } from '../../components/Loader/Loader';
-import { mutateRejectRequest } from '../../thunks/mutateRejectRequest';
 
 const MY_REQUESTS = gql`
     query ($driverUuid: String!) {
@@ -51,7 +50,7 @@ export class MyRequests extends Component {
         >
         {({ loading, error, data }) => {
           if (loading) return <Loader />
-          if (error) return <p>Error :(</p>
+          if (error) return <p>{ error }</p>
             
             return data.pendingRequests.map(({ id, ride, passenger, message, status, createdAt }) => (
                 <div key={id} className="ride-container">
@@ -96,8 +95,4 @@ export const mapStateToProps = (state) => ({
   user: state.user
 })
 
-export const mapDispatchToProps = (dispatch) => ({
-  handleMutateReject: (url) => dispatch(mutateRejectRequest(url))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(MyRequests)
+export default connect(mapStateToProps)(MyRequests)
