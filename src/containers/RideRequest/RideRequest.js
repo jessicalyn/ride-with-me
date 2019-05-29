@@ -34,7 +34,7 @@ export class RideRequest extends Component {
     return(
       <div className="containers">
         <h2>Ride Request</h2>
-        <form onSubmit={this.createRequest}>
+        <form>
           <label>Write a message to { this.props.driverName }:</label>
           <textarea 
             name="message" 
@@ -42,7 +42,6 @@ export class RideRequest extends Component {
             onChange={ this.handleChange }
             rows="5"
             cols="33">
-            I'd like to join your ride...
           </textarea>
           <Mutation mutation={CREATE_REQUEST} variables={{ 
             "message": message,

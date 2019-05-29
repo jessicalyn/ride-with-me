@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
 import { fetchRideSearch } from '../../thunks/fetchRideSearch';
 import { SearchResults } from '../../components/SearchResults/SearchResults';
@@ -49,7 +50,7 @@ export class RideSearch extends Component {
     const { start_location, end_location, start_date, request, id, driverName } = this.state
     const { searchResults } = this.props
     let ridesToDisplay
-
+    
     if(searchResults) {
       ridesToDisplay = searchResults.map(ride => {
         return <SearchResults key={ride.id} {...ride} sendJoinRequest={this.sendJoinRequest} /> })
@@ -60,6 +61,7 @@ export class RideSearch extends Component {
     return(
       <div className="containers ride-search-container">
         <h3>Find a Ride</h3>
+        { !this.props.user && <Redirect to='/login' />}
         {this.props.cities?  
           <form className="search-form" onSubmit={this.handleSubmit}>
             <div className="search-divs">
@@ -93,7 +95,8 @@ export class RideSearch extends Component {
 export const mapStateToProps = (state) => ({
   cities: state.cities,
   searchResults: state.searchResults,
-  isLoading: state.isLoading
+  isLoading: state.isLoading,
+  user: state.user
 })
 
 export const mapDispatchToProps = (dispatch) => ({
