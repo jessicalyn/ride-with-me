@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 export class RideInfo extends Component {
   constructor({ driver, ridepassengerSet }) {
@@ -10,14 +11,17 @@ export class RideInfo extends Component {
   }
 
   componentDidMount() {
-    //add check for userId against driver and passender id
-    //this.setState({ isDriver: true or false })
+    const { uuid } = this.props.user
+    const { driver } = this.props
+    if (uuid === driver.uuid) {
+      this.setState({ isDriver: true })
+    }
   }
 
   render() {
     const { driver, endCity, startCity, status, ridepassengerSet } = this.props
-    const ridePassengers = ridepassengerSet.map(passenger => {
-      return <p>{passenger.firstName}</p>
+    const ridePassengers = ridepassengerSet.map((passenger, index) => {
+      return <p key={index}>{passenger.firstName}</p>
     })
     return(
       <div className="containers ride-info-container">
@@ -32,10 +36,8 @@ export class RideInfo extends Component {
   }
 }
 
-// driver: {id: "2"}
-// endCity: {id: "3"}
-// id: "3"
-// match: {path: "/rides/:id", url: "/rides/3", isExact: true, params: {…}}
-// ridepassengerSet: []
-// startCity: {id: "2"}
-// status: "available"
+export const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps)(RideInfo)

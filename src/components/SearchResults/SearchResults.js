@@ -8,7 +8,7 @@ export const SearchResults = ({ id, description, price, totalSeats, departureTim
       <h4>{ totalSeats } Seats Available</h4>
       <h4>{ driver.firstName } is requesting ${ price } per seat</h4>
       <h4>{ description }</h4>
-      <button onClick={(() => sendJoinRequest(id))}>Request to Join</button>
+      <button onClick={(() => sendJoinRequest(id, driver.firstName, driver.id))}>Request to Join</button>
     </div>
   )
 }

@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Redirect } from 'react-router-dom';
 
 export class CreateRide extends Component {
   state = {
-    driverId: 1,
+    driverUuid: this.props.user.uuid,
     startCityId: 0,
     endCityId: 0,
     description: "",
-    mileage: 0,
     price: 0,
     totalSeats: 0,
-    departureTime: "" 
+    departureDate: "" 
   }
 
   handleChange = (e) => {
@@ -31,30 +31,25 @@ export class CreateRide extends Component {
     })
   }
 
-  //need to set state for mileage and driverId in method to pass in mutation variables
-
-
   render() {
-    const { description, driverId, startCityId, endCityId, mileage, price, totalSeats, departureTime } = this.state
+    const { description, driverUuid, startCityId, endCityId, price, totalSeats, departureDate } = this.state
     const CREATE_RIDE = gql`
       mutation(
-          $driverId: Int!,
+          $driverUuid: String!,
           $startCityId: Int!,
           $endCityId: Int!,
           $description: String!,
-          $mileage: Int!,
           $price: Float!,
           $totalSeats: Int!,
-          $departureTime: Date!) {
+          $departureDate: Date!) {
         createRide(
-          driverId: $driverId, 
+          driverUuid: $driverUuid, 
           startCityId: $startCityId,
           endCityId: $endCityId,
           description: $description,
-          mileage: $mileage,
           price: $price,
           totalSeats: $totalSeats,
-          departureTime: $departureTime) {
+          departureDate: $departureDate) {
       ride {
         id
       }
@@ -62,6 +57,7 @@ export class CreateRide extends Component {
     return (
       <div className="create-ride-container">
         <div>
+          { !this.props.user && <Redirect to='/login' />}
           <h3>Create a Ride</h3>
           <form>
             <div>
@@ -80,7 +76,7 @@ export class CreateRide extends Component {
             </div>
             <div>
               <label>Start Date</label>
-              <input className="mb2" type="date" name="departureTime" value={departureTime} onChange={this.handleChange} />
+              <input className="mb2" type="date" name="departureDate" value={departureDate} onChange={this.handleChange} />
             </div>
             <div>
               <label>Compensation</label>
@@ -98,13 +94,12 @@ export class CreateRide extends Component {
         </div>
         <Mutation mutation={CREATE_RIDE} variables={{ 
           "description": description,
-          "driverId":driverId,
+          "driverUuid":driverUuid,
           "startCityId": startCityId,
           "endCityId": endCityId,
-          "mileage": mileage,
           "price": price,
           "totalSeats": totalSeats,
-          "departureTime": departureTime
+          "departureDate": departureDate
         }}>
           {(createRide, { data, loading, error }) => <button onClick={createRide}>Add Ride</button>}
         </Mutation>
@@ -114,6 +109,7 @@ export class CreateRide extends Component {
 }
 
 export const mapStateToProps = (state) => ({
+  user: state.user,
   cities: state.cities
 })
 

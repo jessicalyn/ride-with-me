@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import RideSearch from '../RideSearch/RideSearch';
 import CreateRide from '../CreateRide/CreateRide';
 import MyRides from '../MyRides/MyRides';
-import { Profile } from '../Profile/Profile';
-import { RideInfo } from '../RideInfo/RideInfo';
+import Profile from '../Profile/Profile';
+import RideInfo from '../RideInfo/RideInfo';
 import Login from '../Login/Login';
 import { Callback } from '../Callback/Callback';
+import { NotFound } from '../../components/NotFound/NotFound';
 import { fetchCities } from '../../thunks/fetchCities';
 import { fetchRideInfo } from '../../thunks/fetchRideInfo';
 
@@ -30,25 +31,29 @@ export class App extends Component {
             <Link to='/profile' className="nav-buttons">Profile</Link>
           </div>
         </header>
-        <Route exact path='/' component={ RideSearch } />
-        <Route exact path='/findride' component={ RideSearch } />
-        <Route exact path='/newride' component={ CreateRide } />
-        <Route path='/myrides' component={ MyRides } />
-        <Route path='/profile' component={ Profile } />
-        <Route path='/rides/:id' render={({ match }) => {
-          const currentRide = this.props.rides.find(ride => parseInt(ride.id) === parseInt(match.params.id))
-          if(currentRide === undefined) return <p>Error</p>
-          return <RideInfo match={match} {...currentRide} />
-        }} />
-        <Route path='/login' component={ Login } />
-        <Route path='/callback' component={ Callback } />
+        <Switch>
+          <Route exact path='/' component={ RideSearch } />
+          <Route exact path='/findride' component={ RideSearch } />
+          <Route exact path='/newride' component={ CreateRide } />
+          <Route path='/myrides' component={ MyRides } />
+          <Route path='/profile' component={ Profile } />
+          <Route path='/rides/:id' render={({ match }) => {
+            const currentRide = this.props.rides.find(ride => parseInt(ride.id) === parseInt(match.params.id))
+            if(currentRide === undefined) return <p>Error</p>
+            return <RideInfo match={match} {...currentRide} />
+          }} />
+          <Route path='/login' component={ Login } />
+          <Route path='/callback' component={ Callback } />
+          <Route path='*' component={ NotFound } />
+        </Switch>
       </div>
     );
   }
 }
 
 export const mapStateToProps = (state) => ({
-  rides: state.rides
+  rides: state.rides,
+  user: state.user
 })
 
 export const mapDispatchToProps = (dispatch) => ({

@@ -5,6 +5,7 @@ import { loadingReducer } from './loadingReducer';
 import { ridesReducer } from './ridesReducer';
 import { searchResultsReducer } from './searchResultsReducer';
 import { searchableCitiesReducer } from './searchableCitiesReducer';
+import { userReducer } from './userReducer';
 
 export const rootReducer = combineReducers({
   error: errorReducer,
@@ -12,5 +13,6 @@ export const rootReducer = combineReducers({
   isLoading: loadingReducer,
   rides: ridesReducer,
   searchResults: searchResultsReducer,
-  searchableCities: searchableCitiesReducer
+  searchableCities: searchableCitiesReducer,
+  user: userReducer
 })

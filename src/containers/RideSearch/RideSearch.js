@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
 import { fetchRideSearch } from '../../thunks/fetchRideSearch';
 import { SearchResults } from '../../components/SearchResults/SearchResults';
+import RideRequest from '../RideRequest/RideRequest';
 
 export class RideSearch extends Component {
   constructor() {
@@ -10,7 +12,10 @@ export class RideSearch extends Component {
     this.state = {
       start_location: "",
       end_location: "",
-      start_date: ""
+      start_date: "",
+      request: false,
+      id: 0,
+      driverName: ""
     }
   }
 
@@ -24,9 +29,9 @@ export class RideSearch extends Component {
     const { start_location, end_location, start_date } = this.state
     e.preventDefault()
     if(start_date) {
-      queryVariables = `{searchRidesByCities(startCityId:${start_location}, endCityId: ${end_location}, departureTime: \"${start_date}\"){ id description mileage price totalSeats departureTime status driver { id firstName lastName } endCity { id name } startCity { id name }}}`
+      queryVariables = `{searchRidesByCities(startCityId:${start_location}, endCityId: ${end_location}, departureDate: \"${start_date}\"){ id description mileage price totalSeats departureDate status driver { id firstName lastName } endCity { id name } startCity { id name }}}`
     } else {
-      queryVariables = `{searchRidesByCities(startCityId:${start_location}, endCityId: ${end_location}){ id description mileage price totalSeats departureTime status driver { id firstName lastName } endCity { id name } startCity { id name }}}`
+      queryVariables = `{searchRidesByCities(startCityId:${start_location}, endCityId: ${end_location}){ id description mileage price totalSeats departureDate status driver { id firstName lastName } endCity { id name } startCity { id name }}}`
     }
     this.props.fetchRideSearch(queryVariables)
   }
@@ -37,23 +42,26 @@ export class RideSearch extends Component {
     })
   }
 
-  sendJoinRequest = (id) => {
-    console.log(id)
+  sendJoinRequest = (id, driverName) => {
+    this.setState({ request: true, id, driverName })
   }
   
   render() {
-    const { start_location, end_location, start_date } = this.state
+    const { start_location, end_location, start_date, request, id, driverName } = this.state
     const { searchResults } = this.props
     let ridesToDisplay
-
+    
     if(searchResults) {
       ridesToDisplay = searchResults.map(ride => {
         return <SearchResults key={ride.id} {...ride} sendJoinRequest={this.sendJoinRequest} /> })
-    }
+      }
 
+    if(request) return <RideRequest rideId={id} driverName={driverName} />
+      
     return(
       <div className="containers ride-search-container">
         <h3>Find a Ride</h3>
+        { !this.props.user && <Redirect to='/login' />}
         {this.props.cities?  
           <form className="search-form" onSubmit={this.handleSubmit}>
             <div className="search-divs">
@@ -77,6 +85,7 @@ export class RideSearch extends Component {
             <button>Search</button>
           </form>
         : <Loader /> }
+        { this.props.isLoading && <Loader /> }
         { ridesToDisplay }
       </div>
     )
@@ -85,7 +94,9 @@ export class RideSearch extends Component {
 
 export const mapStateToProps = (state) => ({
   cities: state.cities,
-  searchResults: state.searchResults
+  searchResults: state.searchResults,
+  isLoading: state.isLoading,
+  user: state.user
 })
 
 export const mapDispatchToProps = (dispatch) => ({
