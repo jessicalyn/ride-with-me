@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
 import { fetchRideSearch } from '../../thunks/fetchRideSearch';
 import { SearchResults } from '../../components/SearchResults/SearchResults';
+import { RideRequest } from '../RideRequest/RideRequest';
 
 export class RideSearch extends Component {
   constructor() {
@@ -10,7 +12,9 @@ export class RideSearch extends Component {
     this.state = {
       start_location: "",
       end_location: "",
-      start_date: ""
+      start_date: "",
+      request: false,
+      id: 0
     }
   }
 
@@ -38,19 +42,21 @@ export class RideSearch extends Component {
   }
 
   sendJoinRequest = (id) => {
-    console.log(id)
+    this.setState({ request: true, id: id })
   }
   
   render() {
-    const { start_location, end_location, start_date } = this.state
+    const { start_location, end_location, start_date, request, id } = this.state
     const { searchResults } = this.props
     let ridesToDisplay
 
     if(searchResults) {
       ridesToDisplay = searchResults.map(ride => {
         return <SearchResults key={ride.id} {...ride} sendJoinRequest={this.sendJoinRequest} /> })
-    }
+      }
 
+    if(request) return <RideRequest id={id} />
+      
     return(
       <div className="containers ride-search-container">
         <h3>Find a Ride</h3>

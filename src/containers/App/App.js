@@ -9,6 +9,7 @@ import { RideInfo } from '../RideInfo/RideInfo';
 import Login from '../Login/Login';
 import { Callback } from '../Callback/Callback';
 import { NotFound } from '../../components/NotFound/NotFound';
+import { RideRequest } from '../RideRequest/RideRequest';
 import { fetchCities } from '../../thunks/fetchCities';
 import { fetchRideInfo } from '../../thunks/fetchRideInfo';
 
@@ -44,6 +45,7 @@ export class App extends Component {
           }} />
           <Route path='/login' component={ Login } />
           <Route path='/callback' component={ Callback } />
+          
           <Route path='*' component={ NotFound } />
         </Switch>
       </div>
