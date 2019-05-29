@@ -19,7 +19,7 @@ export class Login extends Component {
   googleLogin = (response) => {
     console.log(response)
     const { tokenId, profileObj } = response
-    this.setState({ firstName: profileObj.familyName, lastName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
+    this.setState({ lastName: profileObj.familyName, firstName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
     this.userLogin()
   }
   
@@ -33,10 +33,10 @@ export class Login extends Component {
     console.log("DELETE THE FAKE USER")
     const user = { 
       email: "jessicalynhansen@gmail.com", 
-      firstName: "Hansen",
+      firstName: "Jessica",
       id: "12",
-      lastName: "Jessica",
-      uuid: "a710eedc-819c-11e9-8f08-5a5d1f8d1912" 
+      lastName: "Hansen",
+      uuid: "ce3281a4-8239-11e9-8185-ae4417349eeb" 
     }
     this.props.loginUser(user)
     console.log("google login didn't work")

@@ -5,7 +5,7 @@ import RideSearch from '../RideSearch/RideSearch';
 import CreateRide from '../CreateRide/CreateRide';
 import MyRides from '../MyRides/MyRides';
 import Profile from '../Profile/Profile';
-import { RideInfo } from '../RideInfo/RideInfo';
+import RideInfo from '../RideInfo/RideInfo';
 import Login from '../Login/Login';
 import { Callback } from '../Callback/Callback';
 import { NotFound } from '../../components/NotFound/NotFound';

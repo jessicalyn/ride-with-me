@@ -6,7 +6,7 @@ export const fetchRideInfo = () => {
     const url = 'https://ride-with-me-backend.herokuapp.com/graphql/?query='
     try {
       dispatch(isLoading(true))
-      const searchParams = '{ availableRides{id status driver{id firstName}ridepassengerSet{passenger{id firstName}}endCity{id name}startCity{id name}} }'
+      const searchParams = '{ availableRides{id status driver{id uuid firstName}ridepassengerSet{passenger{id firstName}}endCity{id name}startCity{id name}} }'
       const options = fetchOptionsCreator('POST', searchParams)
       const response = await fetch(url, options)
       if (!response.ok) {

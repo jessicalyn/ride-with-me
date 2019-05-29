@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 export class CreateRide extends Component {
   state = {
-    driverId: 1,
+    driverUuid: 1,
     startCityId: 0,
     endCityId: 0,
     description: "",
@@ -32,14 +32,14 @@ export class CreateRide extends Component {
     })
   }
 
-  //need to set state for mileage and driverId in method to pass in mutation variables
+  //need to set state for mileage and driverUuid in method to pass in mutation variables
 
 
   render() {
-    const { description, driverId, startCityId, endCityId, mileage, price, totalSeats, departureTime } = this.state
+    const { description, driverUuid, startCityId, endCityId, mileage, price, totalSeats, departureTime } = this.state
     const CREATE_RIDE = gql`
       mutation(
-          $driverId: Int!,
+          $driverUuid: Int!,
           $startCityId: Int!,
           $endCityId: Int!,
           $description: String!,
@@ -48,7 +48,7 @@ export class CreateRide extends Component {
           $totalSeats: Int!,
           $departureTime: Date!) {
         createRide(
-          driverId: $driverId, 
+          driverUuid: $driverUuid, 
           startCityId: $startCityId,
           endCityId: $endCityId,
           description: $description,
@@ -100,7 +100,7 @@ export class CreateRide extends Component {
         </div>
         <Mutation mutation={CREATE_RIDE} variables={{ 
           "description": description,
-          "driverId":driverId,
+          "driverUuid":driverUuid,
           "startCityId": startCityId,
           "endCityId": endCityId,
           "mileage": mileage,

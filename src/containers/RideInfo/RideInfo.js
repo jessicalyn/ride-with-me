@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 export class RideInfo extends Component {
   constructor({ driver, ridepassengerSet }) {
@@ -10,8 +11,13 @@ export class RideInfo extends Component {
   }
 
   componentDidMount() {
-    //add check for userId against driver and passender id
-    //this.setState({ isDriver: true or false })
+    const { uuid } = this.props.user
+    console.log("uuid", uuid)
+    const { driver } = this.props
+    console.log("driver", driver)
+    if (uuid === driver.uuid) {
+      this.setState({ isDriver: true })
+    }
   }
 
   render() {
@@ -39,3 +45,9 @@ export class RideInfo extends Component {
 // ridepassengerSet: []
 // startCity: {id: "2"}
 // status: "available"
+
+export const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps)(RideInfo)
