@@ -29,9 +29,9 @@ export class RideSearch extends Component {
     const { start_location, end_location, start_date } = this.state
     e.preventDefault()
     if(start_date) {
-      queryVariables = `{searchRidesByCities(startCityId:${start_location}, endCityId: ${end_location}, departureTime: \"${start_date}\"){ id description mileage price totalSeats departureTime status driver { id firstName lastName } endCity { id name } startCity { id name }}}`
+      queryVariables = `{searchRidesByCities(startCityId:${start_location}, endCityId: ${end_location}, departureDate: \"${start_date}\"){ id description mileage price totalSeats departureDate status driver { id firstName lastName } endCity { id name } startCity { id name }}}`
     } else {
-      queryVariables = `{searchRidesByCities(startCityId:${start_location}, endCityId: ${end_location}){ id description mileage price totalSeats departureTime status driver { id firstName lastName } endCity { id name } startCity { id name }}}`
+      queryVariables = `{searchRidesByCities(startCityId:${start_location}, endCityId: ${end_location}){ id description mileage price totalSeats departureDate status driver { id firstName lastName } endCity { id name } startCity { id name }}}`
     }
     this.props.fetchRideSearch(queryVariables)
   }

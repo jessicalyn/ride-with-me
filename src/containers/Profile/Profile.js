@@ -12,15 +12,14 @@ export class Profile extends Component {
   }
 
   render() {
+    const { firstName, lastName, email, imageUrl } = this.props.user
     return(
       <div className="containers ride-search-container">
         { !this.props.user && <Redirect to='/login' />}
           <h2>My Profile</h2>
-          <h4>Name</h4>
-          <h4>Email</h4>
-          <h4>Phone</h4>
-          <h4>Password</h4>
-          <h4>Add Image Upload?</h4>
+          <h4>Name: {firstName} {lastName}</h4>
+          <h4>Email: {email}</h4>
+          <img src={imageUrl} alt="User's Google Profile"/>
           <GoogleLogout
             buttonText="Logout"
             onLogoutSuccess={this.logout}

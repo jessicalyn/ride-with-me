@@ -48,7 +48,7 @@ export class RideRequest extends Component {
             "passengerUuid": uuid,
             "rideId": rideId
           }}>
-            {(createRequest, { data, loading, error }) => <button onClick={createRequest}>Add Ride</button> }
+            {(createRequest, { data, loading, error }) => <button onClick={createRequest}>Send Request</button> }
           </Mutation>
         </form>
       </div>

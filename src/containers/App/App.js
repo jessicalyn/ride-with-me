@@ -44,7 +44,6 @@ export class App extends Component {
           }} />
           <Route path='/login' component={ Login } />
           <Route path='/callback' component={ Callback } />
-          
           <Route path='*' component={ NotFound } />
         </Switch>
       </div>

@@ -12,33 +12,41 @@ export class Login extends Component {
       firstName: "",
       lastName: "",
       email: "",
-      googleId: ""
+      googleId: "",
+      imageUrl: ""
     }
   }
 
   googleLogin = (response) => {
     console.log(response)
     const { tokenId, profileObj } = response
-    this.setState({ lastName: profileObj.familyName, firstName: profileObj.givenName, email: profileObj.email, googleId: tokenId })
+    this.setState({ 
+      lastName: profileObj.familyName,
+      firstName: profileObj.givenName,
+      email: profileObj.email,
+      googleId: tokenId,
+      imageUrl: profileObj.imageUrl
+    })
     this.userLogin()
   }
   
   userLogin = () => {
-    const { firstName, lastName, email } = this.state
-    const variables = `{"email":"${email}","firstName":"${firstName}","lastName":"${lastName}"}`
+    const { firstName, lastName, email, imageUrl } = this.state
+    const variables = `{"email":"${email}","firstName":"${firstName}","lastName":"${lastName}","imageUrl":"${imageUrl}"}`
     this.props.mutateLogin(variables)
   }
 
   tryAgain = (response) => {
-    console.log("DELETE THE FAKE USER")
-    const user = { 
-      email: "jessicalynhansen@gmail.com", 
-      firstName: "Jessica",
-      id: "12",
-      lastName: "Hansen",
-      uuid: "ce3281a4-8239-11e9-8185-ae4417349eeb" 
-    }
-    this.props.loginUser(user)
+    // console.log("DELETE THE FAKE USER")
+    // const user = { 
+    //   email: "jessicalynhansen@gmail.com", 
+    //   firstName: "Jessica",
+    //   id: "12",
+    //   lastName: "Hansen",
+    //   uuid: "ce3281a4-8239-11e9-8185-ae4417349eeb",
+    //   imageUrl: "https://lh6.googleusercontent.com/-rNaQjqHsAWU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfzRpr9hfnalPPwM6v2YB9D4chOtA/s96-c/photo.jpg"
+    // }
+    // this.props.loginUser(user)
     console.log("google login didn't work")
   }
 

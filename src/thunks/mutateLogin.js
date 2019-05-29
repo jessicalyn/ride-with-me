@@ -2,7 +2,7 @@ import { hasError, loginUser, isLoading } from '../actions';
 
 export const mutateLogin = (variables) => {
   return async (dispatch) => {
-    const url = 'https://ride-with-me-backend.herokuapp.com/graphql/?query=mutation($email:String!,$firstName:String!,$lastName:String!){loginUser(email:$email,firstName:$firstName,lastName:$lastName){user{id,firstName,lastName,email,uuid}}}&variables='
+    const url = 'https://ride-with-me-backend.herokuapp.com/graphql/?query=mutation($email:String!,$firstName:String!,$lastName:String!,$imageUrl:String!){loginUser(email:$email,firstName:$firstName,lastName:$lastName,imageUrl:$imageUrl){user{id,firstName,lastName,email,uuid,imageUrl}}}&variables='
     try {
       dispatch(isLoading(true))
       const urlVariables = url + variables
