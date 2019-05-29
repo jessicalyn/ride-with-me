@@ -21,7 +21,7 @@ export class RideInfo extends Component {
   render() {
     const { driver, endCity, startCity, status, ridepassengerSet } = this.props
     const ridePassengers = ridepassengerSet.map((passenger, index) => {
-      return <p key={index}>{passenger.firstName}</p>
+      return <p key={index}>{passenger.passenger.firstName}</p>
     })
     return(
       <div className="containers ride-info-container">
@@ -30,7 +30,7 @@ export class RideInfo extends Component {
         <p>Driver Name: {driver.firstName}</p>
         <p>{startCity.name} to {endCity.name}</p>
         <p>Ride Status: {status}</p>
-        {ridePassengers && <p>Passenger List: {ridePassengers}</p>}
+        {ridePassengers && <div>Passenger List: {ridePassengers}</div>}
       </div>
     )
   }

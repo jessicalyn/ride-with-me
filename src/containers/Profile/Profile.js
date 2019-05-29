@@ -21,6 +21,7 @@ export class Profile extends Component {
           <h4>Email: {email}</h4>
           <img src={imageUrl} alt="User's Google Profile"/>
           <GoogleLogout
+            clientId="716984648143-q0uo1263pr96hegug4iqlotqslidqu9p.apps.googleusercontent.com"
             buttonText="Logout"
             onLogoutSuccess={this.logout}
           >
