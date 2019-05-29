@@ -5,19 +5,26 @@ import { connect } from 'react-redux';
 import { Loader } from '../../components/Loader/Loader';
 
 const DELETE_RIDER = gql`
-    mutation($passengerUuid: String! $rideId: Int!){
-      deleteRidePassenger(passengerUuid:$passengerUuid, rideId:$rideId){
-        ok
-        message
-      }
+  mutation($passengerUuid: String! $rideId: Int!){
+    deleteRidePassenger(passengerUuid:$passengerUuid, rideId:$rideId){
+      ok
+      message
     }
-  `
+  }
+`
+
+const COMPLETE_RIDE = gql`
+  mutation ($id: Int!, $status: String!) {
+    changeRideStatus(id: $id, status: $status) {
+      ride { id status }
+    }
+  }
+`
 
 export class RideInfo extends Component {
   constructor({ driver, ridepassengerSet }) {
     super();
     this.state = {
-      isCancelled: false,
       isDriver: false
     }
   }
@@ -31,7 +38,6 @@ export class RideInfo extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { id, driver, endCity, startCity, status, ridepassengerSet, user } = this.props
     const passengerUuid = user.uuid
     const ridePassengers = ridepassengerSet.map((passenger, index) => {
@@ -54,10 +60,19 @@ export class RideInfo extends Component {
             if (error) return <div>Error: { error }</div>
             if (!data) return <button onClick={deleteRidePassenger}>Cancel Ride</button>
             if (data) return <h3>Ride Cancelled!</h3>
-          }
-        }
+          }}
         </Mutation>
-        
+        <Mutation mutation={COMPLETE_RIDE} variables={{ 
+          "id": id,
+          "status": "completed"
+        }}>
+          {(changeRideStatus, { data, loading, error }) => {
+            if (loading) return <Loader />
+            if (error) return <div>Error: { error }</div>
+            if (!data) return <button onClick={changeRideStatus}>Ride Completed</button>
+            if (data) return <h3>Ride Completed!</h3>
+          }}
+        </Mutation>
       </div>
     )
   }
