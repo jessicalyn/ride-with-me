@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
 import { fetchRideSearch } from '../../thunks/fetchRideSearch';
 import { SearchResults } from '../../components/SearchResults/SearchResults';
-import { RideRequest } from '../RideRequest/RideRequest';
+import RideRequest from '../RideRequest/RideRequest';
 
 export class RideSearch extends Component {
   constructor() {
@@ -14,7 +13,8 @@ export class RideSearch extends Component {
       end_location: "",
       start_date: "",
       request: false,
-      id: 0
+      id: 0,
+      driverName: ""
     }
   }
 
@@ -41,12 +41,12 @@ export class RideSearch extends Component {
     })
   }
 
-  sendJoinRequest = (id) => {
-    this.setState({ request: true, id: id })
+  sendJoinRequest = (id, driverName) => {
+    this.setState({ request: true, id, driverName })
   }
   
   render() {
-    const { start_location, end_location, start_date, request, id } = this.state
+    const { start_location, end_location, start_date, request, id, driverName } = this.state
     const { searchResults } = this.props
     let ridesToDisplay
 
@@ -55,7 +55,7 @@ export class RideSearch extends Component {
         return <SearchResults key={ride.id} {...ride} sendJoinRequest={this.sendJoinRequest} /> })
       }
 
-    if(request) return <RideRequest id={id} />
+    if(request) return <RideRequest rideId={id} driverName={driverName} />
       
     return(
       <div className="containers ride-search-container">
