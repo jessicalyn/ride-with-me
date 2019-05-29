@@ -7,6 +7,7 @@ import MyRides from '../MyRides/MyRides';
 import Profile from '../Profile/Profile';
 import RideInfo from '../RideInfo/RideInfo';
 import Login from '../Login/Login';
+import MyRequests from '../MyRequests/MyRequests';
 import { Callback } from '../Callback/Callback';
 import { NotFound } from '../../components/NotFound/NotFound';
 import { fetchCities } from '../../thunks/fetchCities';
@@ -28,6 +29,7 @@ export class App extends Component {
             <Link to='/findride' className="nav-buttons">Find a Ride</Link>
             <Link to='/newride' className="nav-buttons">Create a Ride</Link>
             <Link to='/myrides' className="nav-buttons">My Rides</Link>
+            <Link to='/myrequests' className="nav-buttons">My Requests</Link>
             <Link to='/profile' className="nav-buttons">Profile</Link>
           </div>
         </header>
@@ -37,6 +39,7 @@ export class App extends Component {
           <Route exact path='/newride' component={ CreateRide } />
           <Route path='/myrides' component={ MyRides } />
           <Route path='/profile' component={ Profile } />
+          <Route path='/myrequests' component={ MyRequests } />
           <Route path='/rides/:id' render={({ match }) => {
             const currentRide = this.props.rides.find(ride => parseInt(ride.id) === parseInt(match.params.id))
             if(currentRide === undefined) return <p>Error</p>

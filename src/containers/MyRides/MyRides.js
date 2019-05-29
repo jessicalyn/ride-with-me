@@ -15,7 +15,6 @@ export class MyRides extends Component {
   render() {
     const { uuid } = this.props.user
     const userUuid = uuid
-    console.log(userUuid)
     const MY_RIDES = gql`
         query ($userUuid: String!){
           myRides(userUuid: $userUuid) {

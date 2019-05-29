@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Redirect } from 'react-router-dom';
+import { Loader } from '../../components/Loader/Loader';
 
 export class CreateRide extends Component {
   state = {
@@ -101,7 +102,13 @@ export class CreateRide extends Component {
           "totalSeats": totalSeats,
           "departureDate": departureDate
         }}>
-          {(createRide, { data, loading, error }) => <button onClick={createRide}>Add Ride</button>}
+          {(createRide, { data, loading, error }) => {
+            if (loading) return <Loader />
+            if (error) return <p>Error :(</p> 
+            if (!data) return <button onClick={createRide}>Add Ride</button>
+            if (data) return <h3>Ride Created!</h3>
+          }
+        }
         </Mutation>
       </div>
     )
