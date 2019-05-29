@@ -116,6 +116,7 @@ export class CreateRide extends Component {
 }
 
 export const mapStateToProps = (state) => ({
+  user: state.user,
   cities: state.cities
 })
 

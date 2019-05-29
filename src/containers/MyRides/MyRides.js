@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import { Link, Redirect } from 'react-router-dom';
 
-export default class MyRides extends Component {
+export class MyRides extends Component {
   constructor() {
     super();
     this.state = {
@@ -55,3 +56,9 @@ export default class MyRides extends Component {
     )
   }
 }
+
+export const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps)(MyRides)
