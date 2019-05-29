@@ -6,47 +6,37 @@ Wireframe Link: https://docs.google.com/presentation/d/1W3fXfZMwBxfFtAGYkvNURCo6
 
 ## Overview:
 
-TrapperKeeper is a group project based on the user functionality of Google Keep. You can add and save notes. Notes can also be edited, list items marked as completed, and the background color of the note can be changed. 
+Ride With Me is a carpooling application that connects drivers with passengers in need of a ride for a long distance trip. It allows drivers to have a more affordable ride by charging for available seats in the car, and it allows passengers to pay an affordable fee for an eco-friendly ride.
 
-[More information about original assignment can be found here](http://frontend.turing.io/projects/trapper-keeper.html)
+By using Ride With Me, a user can search for a ride between different cities, choose the best ride for them and send a request to join that ride. The driver for that ride can then choose to accept or deny their request.
 
-## Preview:
-
-<img src="src/media/TrapperKeeper.png" alt="TrapperKeeper screenshot">
-
-Creating a new note             |  Deleting a note
-:-------------------------:|:-------------------------:
-<img src="src/media/createNote.gif" alt="creating new note">  |  <img src="src/media/deleteList.gif" alt="deleting a note">
-**Toggling list item completion**             |  **Changing note color**
-<img src="src/media/toggleComplete.gif" alt="marking list item as completed">  |  <img src="src/media/toggleColor.gif" alt="changing color of note">
+All the payments are made in person, so there are no transaction fees involved.
 
 ## Getting Started:
 
 These instructions will get a copy of the project up and running on your local machine for usage and testing purposes.
 
-### Frontend
-clone down the repo: ```$ git clone https://github.com/MRKrog/TrapperKeeper```
+clone down the repo: ```$ git clone https://github.com/jessicalyn/ride-with-me```
 
 cd into directory and run npm install: ```$ npm install```
 
 launch in your browser: ```$ npm start ```
 
-### Backend
-clone down the repo: ```$ git clone https://github.com/MRKrog/TrapperKeeper-api```
+## Site Functionality
 
-cd into directory and run npm install: ``` $ npm install ```
+### User Login/Logout
 
-launch in your browser: ``` $ npm start ```
+Site login is handled by Google OAuth. To login, visit http://ride-with-me-fe.herokuapp.com/ and click the Google login button on the main page. After logging in with Google, a user account will be created and they will be redirected to the ride search page. Users can logout by clicking the Google logout button from the 'Profile' tab.
+
+### Ride Search
+
+Users can search for rides with available seats by accessing the ride search page at http://ride-with-me-fe.herokuapp.com/. Users can search for rides with a certain start and end city with an optional date search parameter. Rides matching the start and cities with a start date on or after the search date will be returned and displayed. Users can then click 'Request to Join' which will take them to a form where they can create a new Ride Request.
 
 ## Future Development and Extensions Notes:
 
-- Fully keyboard navigation on note (ie. ability to press `Enter` to get to next line) \
-- Add drag and drop functionality for notes \
-- Add ability to search notes \
-- Add ability to upload files or pictures to notes
 
 ### Technologies Used
-TrapperKeeper was built using: 
+TrapperKeeper was built using:
 - [SCSS](https://sass-lang.com/)
 - [React.js](https://reactjs.org/)
 - [React-Router](https://reacttraining.com/react-router/)
@@ -59,16 +49,14 @@ And tested using:
 - [Enzyme](https://airbnb.io/enzyme/) & [Jest](https://airbnb.io/enzyme/docs/guides/jest.html)
 
 ## Credits
-Credit for this project goes to: 
-- [David Cisneros](https://github.com/DevelopingDavid)
+Credit for this project goes to:
 - [Jessica Hansen](https://github.com/jessicalyn)
-- [Jake Admire](https://github.com/JakeAdmire)
-- [Michael Krog](https://github.com/MRKrog)
-
+- [Teresa Knowles](https://github.com/teresa-m-knowles)
+- [Chris Lewis](https://github.com/csvlewis)
 ---
-This project was assigned by David Whitaker and Christie Lynam 
+This project was assigned by Jessica Hansen, Teresa Knowles, and Chris Lewis
 
 *@ Turing School of Software and Design, Denver, CO.*
 
 ---
-**[Back to top](https://github.com/MRKrog/TrapperKeeper/blob/master/README.md#trapperkeeper)**
+**[Back to top](https://github.com/jessicalyn/ride-with-me/blob/master/README.md#trapperkeeper)**
