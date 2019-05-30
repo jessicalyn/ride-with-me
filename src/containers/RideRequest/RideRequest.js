@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Loader } from '../../components/Loader/Loader';
 
 export class RideRequest extends Component {
   constructor() {
@@ -43,12 +44,20 @@ export class RideRequest extends Component {
             rows="5"
             cols="33">
           </textarea>
-          <Mutation mutation={CREATE_REQUEST} variables={{ 
-            "message": message,
-            "passengerUuid": uuid,
-            "rideId": rideId
-          }}>
-            {(createRequest, { data, loading, error }) => <button onClick={createRequest}>Send Request</button> }
+          <Mutation mutation={CREATE_REQUEST} >
+            {(createRequest, { data, loading, error }) => {
+              if (loading) return <Loader />
+              if (error) return <p>{ error }</p>
+              if (!data) return <button onClick={(e) => {
+                e.preventDefault()
+                createRequest({ variables: {
+                  "message": message,
+                  "passengerUuid": uuid,
+                  "rideId": rideId
+                }})
+              }}>Send Request</button>
+              if (data) return <h3>Ride Completed!</h3>
+            }}
           </Mutation>
         </form>
       </div>
