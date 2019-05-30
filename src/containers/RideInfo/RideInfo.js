@@ -22,7 +22,7 @@ const COMPLETE_RIDE = gql`
 `
 
 export class RideInfo extends Component {
-  constructor({ driver, ridepassengerSet }) {
+  constructor() {
     super();
     this.state = {
       isDriver: false
@@ -30,6 +30,7 @@ export class RideInfo extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     const { uuid } = this.props.user
     const { driver } = this.props
     if (uuid === driver.uuid) {
@@ -38,7 +39,7 @@ export class RideInfo extends Component {
   }
 
   render() {
-    const { id, driver, endCity, startCity, status, ridepassengerSet, user } = this.props
+    const { id, availableSeats, price, description, driver, endCity, startCity, status, ridepassengerSet, user } = this.props
     const passengerUuid = user.uuid
     const ridePassengers = ridepassengerSet.map((passenger, index) => {
       return <p key={index}>{passenger.passenger.firstName}</p>
@@ -50,6 +51,9 @@ export class RideInfo extends Component {
         <p>Driver Name: {driver.firstName}</p>
         <p>{startCity.name} to {endCity.name}</p>
         <p>Ride Status: {status}</p>
+        <p>Seats Available: { availableSeats }</p>
+        <p>Ride Description: { description }</p>
+        <p>Driver { driver.firstName } is requesting { price } per seat for this ride.</p>
         {ridePassengers && <div>Passenger List: {ridePassengers}</div>}
         <Mutation mutation={DELETE_RIDER} variables={{ 
           "passengerUuid": passengerUuid,
@@ -57,22 +61,24 @@ export class RideInfo extends Component {
         }}>
           {(deleteRidePassenger, { data, loading, error }) => {
             if (loading) return <Loader />
-            if (error) return <div>Error: { error }</div>
+            if (error) return <div>HAYYYYYY: { error }</div>
             if (!data) return <button onClick={deleteRidePassenger}>Cancel Ride</button>
             if (data) return <h3>Ride Cancelled!</h3>
           }}
         </Mutation>
-        <Mutation mutation={COMPLETE_RIDE} variables={{ 
-          "id": id,
-          "status": "completed"
-        }}>
-          {(changeRideStatus, { data, loading, error }) => {
-            if (loading) return <Loader />
-            if (error) return <div>Error: { error }</div>
-            if (!data) return <button onClick={changeRideStatus}>Ride Completed</button>
-            if (data) return <h3>Ride Completed!</h3>
-          }}
-        </Mutation>
+        { this.state.isDriver &&
+          <Mutation mutation={COMPLETE_RIDE} variables={{ 
+            "id": id,
+            "status": "completed"
+          }}>
+            {(changeRideStatus, { data, loading, error }) => {
+              if (loading) return <Loader />
+              if (error) return <div>THIS ERRIOR: { error }</div>
+              if (!data) return <button onClick={changeRideStatus}>Ride Completed</button>
+              if (data) return <h3>Ride Completed!</h3>
+            }}
+          </Mutation>
+        }
       </div>
     )
   }
