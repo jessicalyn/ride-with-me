@@ -18,6 +18,12 @@ export class CreateRide extends Component {
       departureDate: "" 
     }
   }
+
+  componentDidMount() {
+    const { uuid } = this.props.user
+    const driverUuid = uuid
+    this.setState({ driverUuid })
+  }
   
   handleChange = (e) => {
     const { name, value } = e.target
