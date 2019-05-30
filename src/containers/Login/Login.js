@@ -18,7 +18,6 @@ export class Login extends Component {
   }
 
   googleLogin = (response) => {
-    console.log(response)
     const { tokenId, profileObj } = response
     this.setState({ 
       lastName: profileObj.familyName,
@@ -37,16 +36,16 @@ export class Login extends Component {
   }
 
   tryAgain = (response) => {
-    console.log("DELETE THE FAKE USER")
-    const user = { 
-      email: "jessicalynhansen@gmail.com", 
-      firstName: "Jessica",
-      id: "12",
-      lastName: "Hansen",
-      uuid: "f2537ef8-824d-11e9-a8e2-127077869660",
-      imageUrl: "https://lh6.googleusercontent.com/-rNaQjqHsAWU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfzRpr9hfnalPPwM6v2YB9D4chOtA/s96-c/photo.jpg"
-    }
-    this.props.loginUser(user)
+    // console.log("COMMENT OUT THE DEVELOPMENT ONLY USER")
+    // const user = { 
+    //   email: "jessicalynhansen@gmail.com", 
+    //   firstName: "Jessica",
+    //   id: "12",
+    //   lastName: "Hansen",
+    //   uuid: "9d02971c-82e4-11e9-9b16-fa7bdffe9c16",
+    //   imageUrl: "https://lh6.googleusercontent.com/-rNaQjqHsAWU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfzRpr9hfnalPPwM6v2YB9D4chOtA/s96-c/photo.jpg"
+    // }
+    // this.props.loginUser(user)
     console.log("google login didn't work")
   }
 

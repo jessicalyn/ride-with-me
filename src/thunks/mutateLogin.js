@@ -13,8 +13,6 @@ export const mutateLogin = (variables) => {
       }
       const result = await response.json()
       const user = result.data.loginUser.user
-      
-      console.log("mutateLogin", user)
       dispatch(isLoading(false))
       dispatch(loginUser(user))
     } catch(error) {

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyRides Container MyRides should match the snapshot 1`] = `
-"<div className=\\"my-rides-container\\">
+exports[`MyRequests Container MyRequests should match the snapshot 1`] = `
+"<div className=\\"containers\\">
   <h2>
-    My Rides
+    My Requests
   </h2>
   <Query query={{...}} variables={{...}}>
     [function]

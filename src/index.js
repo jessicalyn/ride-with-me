@@ -12,7 +12,7 @@ import App from './containers/App/App';
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import { gql } from "apollo-boost";
+import gql from 'graphql-tag';
 
 const client = new ApolloClient({
   uri: "https://ride-with-me-backend.herokuapp.com/graphql/"

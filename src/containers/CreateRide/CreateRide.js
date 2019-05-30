@@ -6,16 +6,19 @@ import { Redirect } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
 
 export class CreateRide extends Component {
-  state = {
-    driverUuid: this.props.user.uuid,
-    startCityId: 0,
-    endCityId: 0,
-    description: "",
-    price: 0,
-    totalSeats: 0,
-    departureDate: "" 
+  constructor() {
+    super()
+    this.state = {
+      driverUuid: this.props.user.uuid,
+      startCityId: 0,
+      endCityId: 0,
+      description: "",
+      price: 0,
+      totalSeats: 0,
+      departureDate: "" 
+    }
   }
-
+  
   handleChange = (e) => {
     const { name, value } = e.target
     if (name === "price") {
@@ -61,33 +64,33 @@ export class CreateRide extends Component {
           { !this.props.user && <Redirect to='/login' />}
           <h3>Create a Ride</h3>
           <form>
-            <div>
+            <div className="sections">
               <label>Start City</label>
-              <select className="search-drop-down" value={startCityId} name="startCityId" onChange={this.handleChange}>
+              <select className="create-drop-down" value={startCityId} name="startCityId" onChange={this.handleChange}>
                 <option value="0" disable="true" select="true" default>Select a City</option>
                 {this.displayCities()}
               </select>
             </div>
-            <div>
+            <div className="sections">
               <label>End City</label>
-              <select className="search-drop-down" value={endCityId} name="endCityId" onChange={this.handleChange}>
+              <select className="create-drop-down" value={endCityId} name="endCityId" onChange={this.handleChange}>
                 <option value="0" disable="true" select="true" default>Select a City</option>
                 {this.displayCities()}
               </select>
             </div>
-            <div>
+            <div className="sections">
               <label>Start Date</label>
               <input className="mb2" type="date" name="departureDate" value={departureDate} onChange={this.handleChange} />
             </div>
-            <div>
+            <div className="sections">
               <label>Compensation</label>
               <input className="mb2" type="number" name="price" value={price} onChange={this.handleChange} />
             </div>
-            <div>
+            <div className="sections">
               <label>Available Seats</label>
               <input className="mb2" type="text" name="totalSeats" value={totalSeats} onChange={this.handleChange} />
             </div>
-            <div>
+            <div className="sections">
               <label>Short Description</label>
               <input className="mb2" type="text" name="description" value={description} onChange={this.handleChange} />
               </div>
@@ -104,8 +107,8 @@ export class CreateRide extends Component {
         }}>
           {(createRide, { data, loading, error }) => {
             if (loading) return <Loader />
-            if (error) return <p>Error :(</p> 
-            if (!data) return <button onClick={createRide}>Add Ride</button>
+            if (error) return <p>{ error }</p> 
+            if (!data) return <button className="create-button" onClick={createRide}>Add Ride</button>
             if (data) return <h3>Ride Created!</h3>
           }
         }

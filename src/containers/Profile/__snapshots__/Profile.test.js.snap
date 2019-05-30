@@ -1,3 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profile should match the snapshot with all data passed in 1`] = `ShallowWrapper {}`;
+exports[`Profile Container Profile should match the snapshot 1`] = `
+"<div className=\\"containers ride-search-container\\">
+  <h2>
+    My Profile
+  </h2>
+  <h4>
+    Name: 
+     
+  </h4>
+  <h4>
+    Email: 
+  </h4>
+  <img src={[undefined]} alt=\\"User\\\\'s Google Profile\\" />
+  <e clientId=\\"716984648143-q0uo1263pr96hegug4iqlotqslidqu9p.apps.googleusercontent.com\\" buttonText=\\"Logout\\" onLogoutSuccess={[Function]} type=\\"button\\" tag=\\"button\\" disabledStyle={{...}} icon={true} theme=\\"light\\" jsSrc=\\"https://apis.google.com/js/api.js\\" />
+</div>"
+`;

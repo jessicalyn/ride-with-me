@@ -1,15 +1,15 @@
-import { MyRides, mapStateToProps } from './MyRides';
+import { MyRequests, mapStateToProps } from './MyRequests';
 import React from 'react';
 import { shallow } from 'enzyme';
 
-describe('MyRides Container', () => {
-  describe('MyRides', () => {
+describe('MyRequests Container', () => {
+  describe('MyRequests', () => {
     let wrapper
     const mockUser = {id: 1, name: "Jessica"}
 
     beforeEach(() => {
       wrapper = shallow(
-        <MyRides 
+        <MyRequests 
           user={mockUser}
         />
       )

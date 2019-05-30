@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 import { connect } from 'react-redux';
 import { Loader } from '../../components/Loader/Loader';
 
@@ -38,7 +38,7 @@ export class RideInfo extends Component {
   }
 
   render() {
-    const { id, availableSeats, price, description, departureDate, driver, endCity, startCity, status, ridepassengerSet, user } = this.props
+    const { id, availableSeats, price, description, mileage, travelTime, departureDate, driver, endCity, startCity, status, ridepassengerSet, user } = this.props
     const passengerUuid = user.uuid
     const date = new Date(departureDate).toLocaleDateString()
     const ridePassengers = ridepassengerSet.map((passenger, index) => {
@@ -53,6 +53,8 @@ export class RideInfo extends Component {
         <p><span className="bold">Your role:</span> {this.state.isDriver? "Driver" : "Rider" }</p>
         <p><span className="bold">Ride Status:</span> {status}</p>
         <p><span className="bold">Seats Available:</span> { availableSeats }</p>
+        <p><span className="bold">Estimated Mileage:</span> { mileage }</p>
+        <p><span className="bold">Estimated Travel Time:</span> { travelTime }</p>
         <p>{ driver.firstName } is requesting ${ price } per seat for this ride.</p>
         <p><span className="bold">Ride Description:</span> { description }</p>
         {ridePassengers.length > 0 && <div className="passenger-list" ><span className="bold">Passenger List:</span> {ridePassengers}</div>}
