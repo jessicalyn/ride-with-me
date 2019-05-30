@@ -38,7 +38,7 @@ export class RideSearch extends Component {
 
   displayCities = () => {
     return this.props.cities.map(city => {
-      return <option key={`option-${city.name}-${city.id}`} value={city.id} >{city.name}</option>
+      return <option className="drop-down" key={`option-${city.name}-${city.id}`} value={city.id} >{city.name}</option>
     })
   }
 
@@ -82,7 +82,9 @@ export class RideSearch extends Component {
               <label>Start Date</label>
               <input type="date" value={start_date} name="start_date" onChange={this.handleChange}></input>
             </div>
-            <button>Search</button>
+            <div className="search-divs">
+              <button>Search</button>
+            </div>
           </form>
         : <Loader /> }
         { this.props.isLoading && <Loader /> }

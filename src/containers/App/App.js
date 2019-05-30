@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link, Switch } from 'react-router-dom';
+import { Welcome } from '../../components/Welcome/Welcome';
 import RideSearch from '../RideSearch/RideSearch';
 import CreateRide from '../CreateRide/CreateRide';
 import MyRides from '../MyRides/MyRides';
@@ -34,7 +35,7 @@ export class App extends Component {
           </div>
         </header>
         <Switch>
-          <Route exact path='/' component={ RideSearch } />
+          <Route exact path='/' component={ Welcome } />
           <Route exact path='/findride' component={ RideSearch } />
           <Route exact path='/newride' component={ CreateRide } />
           <Route path='/myrides' component={ MyRides } />
@@ -42,7 +43,7 @@ export class App extends Component {
           <Route path='/myrequests' component={ MyRequests } />
           <Route path='/rides/:id' render={({ match }) => {
             const currentRide = this.props.rides.find(ride => parseInt(ride.id) === parseInt(match.params.id))
-            if(currentRide === undefined) return <p>RIDE ERROR</p>
+            if(currentRide === undefined) return <p>RIDE NOT FOUND</p>
             return <RideInfo match={match} {...currentRide} />
           }} />
           <Route path='/login' component={ Login } />
@@ -50,7 +51,7 @@ export class App extends Component {
           <Route path='*' component={ NotFound } />
         </Switch>
       </div>
-    );
+    )
   }
 }
 
