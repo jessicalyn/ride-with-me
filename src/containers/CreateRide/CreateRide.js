@@ -11,7 +11,7 @@ export class CreateRide extends Component {
     startCityId: 0,
     endCityId: 0,
     description: "",
-    price: 0,
+    price: "",
     totalSeats: 0,
     departureDate: "" 
   }
@@ -81,7 +81,7 @@ export class CreateRide extends Component {
             </div>
             <div className="sections">
               <label>Compensation</label>
-              <input className="mb2" type="number" name="price" value={price} onChange={this.handleChange} />
+              <input className="mb2" type="text" name="price" value={price} onChange={this.handleChange} />
             </div>
             <div className="sections">
               <label>Available Seats</label>
@@ -104,7 +104,7 @@ export class CreateRide extends Component {
         }}>
           {(createRide, { data, loading, error }) => {
             if (loading) return <Loader />
-            if (error) return <p>Error :(</p> 
+            if (error) return <p>{ error }</p> 
             if (!data) return <button className="create-button" onClick={createRide}>Add Ride</button>
             if (data) return <h3>Ride Created!</h3>
           }
