@@ -1,7 +1,8 @@
 language: node_js
 node_js:
-  - node
+- node
 deploy:
   provider: heroku
   api_key:
-    secure:
+    secure: Ba1NtZyH6qiqH518XA9KuHc2+vQlUefJ5PKQOPEOm9WZmAeg4kM03mKy8nlHKcAYZaOkKG984TYqhzME5IA8CVezvkraQnVzMpk/EGRr+ldhgjqf2z4N0mOvDUeC8E1MNKbX+5ZVTf5YZQWR1kMYRSx2Gi0Zay60gzpT0d7jGk29xc2khpysMEfH5KZAwA0bafNmhq4S9ZViwbWsFvw4GiuH8gO7KWE/GgvTTXvr+fq5AFS6/oHfbybE0xwTmbN0bsMhIf3OiVVwxsW27/R+borF3Et9K1VjwTkxafKXjk9O/YHd7G43GEI/YFXlI9tyXtQRAqN7ztJEei7ciKxOfWb00FAxAqAAC2C9xBuyz8xCjUl9LmjD0RtPUTVH2PNeFptfjrB7DQldn5UBiDQ1pUc4PbbHB2KdQAO2EFqGq3gMlcJYFuGzfrf9xkkA+467rpkgjrH6uw18xOcEJHerhD4EgGoUvGQTeSEA3IxUMiwAVn4zvD3QMKKQRGgBHiXA+Tg1LXmmtr9izGlRnZF+tx6zwavMNp43EFAnjWmSHFN/+MUl8lqkk0kHXmA8plstOOzUbOVDHJMtDBta1WCglSrBS37cdha+3GDuVrQW8fXvTIGfKbBwThZZhd3uHVALRr29qB+koUQ6I/IBEQpZZS1czqo/RnK6+5x30zpRuMc=
+  app: ride-with-me-fe
