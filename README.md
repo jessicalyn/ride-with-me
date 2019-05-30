@@ -6,47 +6,57 @@ Wireframe Link: https://docs.google.com/presentation/d/1W3fXfZMwBxfFtAGYkvNURCo6
 
 ## Overview:
 
-TrapperKeeper is a group project based on the user functionality of Google Keep. You can add and save notes. Notes can also be edited, list items marked as completed, and the background color of the note can be changed. 
+Ride With Me is a carpooling application that connects drivers with passengers in need of a ride for a long distance trip. It allows drivers to have a more affordable ride by charging for available seats in the car, and it allows passengers to pay an affordable fee for an eco-friendly ride.
 
-[More information about original assignment can be found here](http://frontend.turing.io/projects/trapper-keeper.html)
+By using Ride With Me, a user can search for a ride between different cities, choose the best ride for them and send a request to join that ride. The driver for that ride can then choose to accept or deny their request.
 
-## Preview:
-
-<img src="src/media/TrapperKeeper.png" alt="TrapperKeeper screenshot">
-
-Creating a new note             |  Deleting a note
-:-------------------------:|:-------------------------:
-<img src="src/media/createNote.gif" alt="creating new note">  |  <img src="src/media/deleteList.gif" alt="deleting a note">
-**Toggling list item completion**             |  **Changing note color**
-<img src="src/media/toggleComplete.gif" alt="marking list item as completed">  |  <img src="src/media/toggleColor.gif" alt="changing color of note">
+All the payments are made in person, so there are no transaction fees involved.
 
 ## Getting Started:
 
 These instructions will get a copy of the project up and running on your local machine for usage and testing purposes.
 
-### Frontend
-clone down the repo: ```$ git clone https://github.com/MRKrog/TrapperKeeper```
+clone down the repo: ```$ git clone https://github.com/jessicalyn/ride-with-me```
 
 cd into directory and run npm install: ```$ npm install```
 
 launch in your browser: ```$ npm start ```
 
-### Backend
-clone down the repo: ```$ git clone https://github.com/MRKrog/TrapperKeeper-api```
+## Site Functionality
 
-cd into directory and run npm install: ``` $ npm install ```
+### User Login/Logout
 
-launch in your browser: ``` $ npm start ```
+Site login is handled by Google OAuth. To login, visit http://ride-with-me-fe.herokuapp.com/ and click the Google login button on the main page. After logging in with Google, a user account will be created and they will be redirected to the ride search page. Users can logout by clicking the Google logout button from the 'Profile' tab.
+
+### Ride Search
+
+Users can search for rides with available seats by accessing the ride search page at http://ride-with-me-fe.herokuapp.com/. Users can search for rides with a certain start and end city with an optional date search parameter. Rides matching the start and cities with a start date on or after the search date will be returned and displayed. Users can then click 'Request to Join' which will take them to a form where they can create a new Ride Request. They can send a message to the driver to let them know they want to join their Ride. 
+
+### Create a Ride
+
+Users can offer a ride by clicking on Create a Ride in the navigation bar. They have to choose a start city, end city, compensation, number of available seats and a description of the ride. Once they click the "Add Ride" button, their ride gets created and is now available. 
+
+### My Rides
+
+Users can visit their My Rides page where they can see all of their upcoming rides. They can see the name of the driver, the departure city, arrival city, departure date and a small map. They can also see more information about a specific ride by clicking on "See Ride Info". On a ride's info page, they can see whether they are the driver or a passenger on that ride, the cost of the ride, the description, a map and options to cancel the ride or mark as completed. Only the driver can mark a ride as completed. 
+
+### My Requests
+
+Once a user has requested to join a ride, that driver's ride can see all pending requests in their My Requests page. For each pending request, they can see the name of the person who sent the request, the ride's start city, end city and date, the request's message and how many seats are still available on that ride. They have the options to either add the passenger to the ride or reject their request. 
+
+### Profile
+
+A user can see their account information (email and profile picture) on their profile page. They can also logout of the application. 
 
 ## Future Development and Extensions Notes:
-
-- Fully keyboard navigation on note (ie. ability to press `Enter` to get to next line) \
-- Add drag and drop functionality for notes \
-- Add ability to search notes \
-- Add ability to upload files or pictures to notes
+- User reviews for passengers and drivers
+- In-app messaging between users
+- Ability for riders to select pickup and dropoff locations
+- Payment through the app
+- Mobile-Friendly
 
 ### Technologies Used
-TrapperKeeper was built using: 
+Ride with Me was built using:
 - [SCSS](https://sass-lang.com/)
 - [React.js](https://reactjs.org/)
 - [React-Router](https://reacttraining.com/react-router/)
@@ -54,21 +64,20 @@ TrapperKeeper was built using:
 - [Redux Thunk](https://github.com/reduxjs/redux-thunk)
 - [Node.js](https://nodejs.org/en/)
 - [Express.js](https://expressjs.com/)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
 
 And tested using:
 - [Enzyme](https://airbnb.io/enzyme/) & [Jest](https://airbnb.io/enzyme/docs/guides/jest.html)
 
 ## Credits
-Credit for this project goes to: 
-- [David Cisneros](https://github.com/DevelopingDavid)
+Credit for this project goes to:
 - [Jessica Hansen](https://github.com/jessicalyn)
-- [Jake Admire](https://github.com/JakeAdmire)
-- [Michael Krog](https://github.com/MRKrog)
-
+- [Teresa Knowles](https://github.com/teresa-m-knowles)
+- [Chris Lewis](https://github.com/csvlewis)
 ---
-This project was assigned by David Whitaker and Christie Lynam 
+This project was assigned by Jessica Hansen, Teresa Knowles, and Chris Lewis
 
 *@ Turing School of Software and Design, Denver, CO.*
 
 ---
-**[Back to top](https://github.com/MRKrog/TrapperKeeper/blob/master/README.md#trapperkeeper)**
+**[Back to top](https://github.com/jessicalyn/ride-with-me/blob/master/README.md#ride-with-me)**
