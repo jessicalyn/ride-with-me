@@ -19,14 +19,19 @@
     font-size: 16px;
   }
 
-  button {
+  .search-button {
     height: 50px;
     width: 90%;
     font-size: 16px;
     font-family: $font-main;
     font-weight: 700;
     border: 1.5px solid #aaa;
+    padding: 0;
     
+    &:hover {
+      background: #aaa;
+      border: #aaa
+    }
   }
 }
 

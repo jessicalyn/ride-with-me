@@ -83,7 +83,7 @@ export class RideSearch extends Component {
               <input type="date" value={start_date} name="start_date" onChange={this.handleChange}></input>
             </div>
             <div className="search-divs">
-              <button>Search</button>
+              <button className="search-button">Search</button>
             </div>
           </form>
         : <Loader /> }
