@@ -37,16 +37,16 @@ export class Login extends Component {
   }
 
   tryAgain = (response) => {
-    console.log("DELETE THE FAKE USER")
-    const user = { 
-      email: "jessicalynhansen@gmail.com", 
-      firstName: "Jessica",
-      id: "12",
-      lastName: "Hansen",
-      uuid: "f2537ef8-824d-11e9-a8e2-127077869660",
-      imageUrl: "https://lh6.googleusercontent.com/-rNaQjqHsAWU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfzRpr9hfnalPPwM6v2YB9D4chOtA/s96-c/photo.jpg"
-    }
-    this.props.loginUser(user)
+    // console.log("DELETE THE FAKE USER")
+    // const user = { 
+    //   email: "jessicalynhansen@gmail.com", 
+    //   firstName: "Jessica",
+    //   id: "12",
+    //   lastName: "Hansen",
+    //   uuid: "f2537ef8-824d-11e9-a8e2-127077869660",
+    //   imageUrl: "https://lh6.googleusercontent.com/-rNaQjqHsAWU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfzRpr9hfnalPPwM6v2YB9D4chOtA/s96-c/photo.jpg"
+    // }
+    // this.props.loginUser(user)
     console.log("google login didn't work")
   }
 
