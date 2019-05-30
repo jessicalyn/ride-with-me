@@ -65,7 +65,7 @@ export class MyRequests extends Component {
                   {(createRidePassenger, { data, loading, error }) => {
                     if (loading) return <Loader />
                     if (error) return <p>{ error }</p> 
-                    if (!data) return <button onClick={createRidePassenger}>Add { passenger.firstName } to Ride</button>
+                    if (!data) return <button className="green-button" onClick={createRidePassenger}>Add { passenger.firstName } to Ride</button>
                     if (data) return <h3>Rider Added!</h3>
                   }}
                 </Mutation>
