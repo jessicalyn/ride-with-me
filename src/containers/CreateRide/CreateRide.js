@@ -9,7 +9,7 @@ export class CreateRide extends Component {
   constructor() {
     super()
     this.state = {
-      driverUuid: this.props.user.uuid,
+      driverUuid: "",
       startCityId: 0,
       endCityId: 0,
       description: "",
