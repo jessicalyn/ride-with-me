@@ -5,9 +5,12 @@ import { RideSearch } from './RideSearch';
 describe('RideSearch', () => {
   let wrapper
   const mockState = {
+    driverName: "",
     start_location: "",
     end_location: "",
-    start_date: ""
+    start_date: "",
+    request: false,
+    id: 0
   }
 
   beforeEach(() => {

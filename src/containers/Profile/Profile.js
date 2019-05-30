@@ -7,7 +7,6 @@ import { logoutUser } from '../../actions';
 export class Profile extends Component {
 
   logout = () => {
-    console.log("logout user")
     this.props.logoutUser()
   }
 
