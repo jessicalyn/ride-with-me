@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RideRequest Container RideRequest should match the snapshot 1`] = `
+"<div className=\\"containers\\">
+  <h2>
+    Ride Request
+  </h2>
+  <form>
+    <label>
+      Write a message to 
+      :
+    </label>
+    <textarea name=\\"message\\" value=\\"I\\\\'d like to join your ride...\\" onChange={[Function]} rows=\\"5\\" cols=\\"33\\" />
+    <Mutation mutation={{...}}>
+      [function]
+    </Mutation>
+  </form>
+</div>"
+`;
