@@ -49,7 +49,11 @@ Once a user has requested to join a ride, that driver's ride can see all pending
 A user can see their account information (email and profile picture) on their profile page. They can also logout of the application. 
 
 ## Future Development and Extensions Notes:
-
+- User reviews for passengers and drivers
+- In-app messaging between users
+- Ability for riders to select pickup and dropoff locations
+- Payment through the app
+- Mobile-Friendly
 
 ### Technologies Used
 Ride with Me was built using:
