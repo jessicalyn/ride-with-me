@@ -1,6 +1,5 @@
 .my-rides-container {
   box-shadow: $box-shadow;
-  // border: 2px solid black;
   width: 80%;
   margin: 20px auto;
   background-color: white;
@@ -13,14 +12,8 @@
   margin: 30px;
   border-radius: 8px;
   padding: 10px;
-  box-shadow: 0px 2px 5px 1px grey
-}
-
-.first-line {
+  box-shadow: 0px 2px 5px 1px grey;
   display: flex;
-  justify-content: space-between;
-
-  p {
-    flex: 1
-  }
+  justify-content: space-around;
+  align-items: center
 }
