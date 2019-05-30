@@ -1,7 +1,7 @@
-import { fetchCities } from './fetchCities';
-import { hasError, storeCities } from '../actions';
+import { fetchSearchableCities } from './fetchSearchableCities';
+import { hasError, storeSearchableCities } from '../actions';
 
-describe('fetchCities', () => {
+describe('fetchSearchableCities', () => {
   let mockUrl
   let mockDispatch
   let mockResult
@@ -9,20 +9,20 @@ describe('fetchCities', () => {
   beforeEach(() => {
     mockUrl = "www.webuiltthiscity.com"
     mockDispatch = jest.fn()
-    mockResult = { data: { allCities: [ 'Denver', 'Chicago', 'San Francisco' ] } }
+    mockResult = { data: { searchableCities: { id: 1, startCity: {name: "Denver"}} }}
   })
 
-  it('should dispatch storeCities if the response is okay', async () => {
+  it('should dispatch storeSearchableCities if the response is okay', async () => {
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: true,
       json: () => Promise.resolve(mockResult)
     }))
 
-    const thunk = await fetchCities()
+    const thunk = await fetchSearchableCities()
 
     await thunk(mockDispatch)
 
-    expect(mockDispatch).toHaveBeenCalledWith(storeCities(mockResult.data.allCities))
+    expect(mockDispatch).toHaveBeenCalledWith(storeSearchableCities(mockResult.data.searchableCities))
   })
 
   it('should dispatch hasError if the response is not okay', async () => {
@@ -31,7 +31,7 @@ describe('fetchCities', () => {
       statusText: "Something went wrong"
     }))
 
-    const thunk = await fetchCities()
+    const thunk = await fetchSearchableCities()
 
     await thunk(mockDispatch)
 
