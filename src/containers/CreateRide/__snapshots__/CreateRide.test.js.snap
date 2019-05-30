@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateRide CreateRide container should match the snapshot with all data passed in 1`] = `undefined`;
+exports[`CreateRide CreateRide container should match the snapshot with all data passed in 1`] = `ShallowWrapper {}`;
