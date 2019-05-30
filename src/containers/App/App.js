@@ -42,7 +42,7 @@ export class App extends Component {
           <Route path='/myrequests' component={ MyRequests } />
           <Route path='/rides/:id' render={({ match }) => {
             const currentRide = this.props.rides.find(ride => parseInt(ride.id) === parseInt(match.params.id))
-            if(currentRide === undefined) return <p>Error</p>
+            if(currentRide === undefined) return <p>RIDE ERROR</p>
             return <RideInfo match={match} {...currentRide} />
           }} />
           <Route path='/login' component={ Login } />
