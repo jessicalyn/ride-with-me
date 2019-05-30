@@ -42,7 +42,7 @@ export class Login extends Component {
     //   firstName: "Jessica",
     //   id: "12",
     //   lastName: "Hansen",
-    //   uuid: "f2537ef8-824d-11e9-a8e2-127077869660",
+    //   uuid: "9d02971c-82e4-11e9-9b16-fa7bdffe9c16",
     //   imageUrl: "https://lh6.googleusercontent.com/-rNaQjqHsAWU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfzRpr9hfnalPPwM6v2YB9D4chOtA/s96-c/photo.jpg"
     // }
     // this.props.loginUser(user)

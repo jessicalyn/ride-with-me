@@ -13,7 +13,7 @@ export class CreateRide extends Component {
       startCityId: 0,
       endCityId: 0,
       description: "",
-      price: "",
+      price: 0,
       totalSeats: 0,
       departureDate: "" 
     }
@@ -84,7 +84,7 @@ export class CreateRide extends Component {
             </div>
             <div className="sections">
               <label>Compensation</label>
-              <input className="mb2" type="text" name="price" value={price} onChange={this.handleChange} />
+              <input className="mb2" type="number" name="price" value={price} onChange={this.handleChange} />
             </div>
             <div className="sections">
               <label>Available Seats</label>
