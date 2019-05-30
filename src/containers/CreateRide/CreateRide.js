@@ -6,16 +6,19 @@ import { Redirect } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
 
 export class CreateRide extends Component {
-  state = {
-    driverUuid: this.props.user.uuid,
-    startCityId: 0,
-    endCityId: 0,
-    description: "",
-    price: "",
-    totalSeats: 0,
-    departureDate: "" 
+  constructor() {
+    super()
+    this.state = {
+      driverUuid: this.props.user.uuid,
+      startCityId: 0,
+      endCityId: 0,
+      description: "",
+      price: "",
+      totalSeats: 0,
+      departureDate: "" 
+    }
   }
-
+  
   handleChange = (e) => {
     const { name, value } = e.target
     if (name === "price") {

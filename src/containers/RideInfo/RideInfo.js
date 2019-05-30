@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 import { connect } from 'react-redux';
 import { Loader } from '../../components/Loader/Loader';
 

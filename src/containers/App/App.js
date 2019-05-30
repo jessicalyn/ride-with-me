@@ -9,7 +9,7 @@ import Profile from '../Profile/Profile';
 import RideInfo from '../RideInfo/RideInfo';
 import Login from '../Login/Login';
 import MyRequests from '../MyRequests/MyRequests';
-import { Callback } from '../Callback/Callback';
+import { Callback } from '../../components/Callback/Callback';
 import { NotFound } from '../../components/NotFound/NotFound';
 import { fetchCities } from '../../thunks/fetchCities';
 import { fetchRideInfo } from '../../thunks/fetchRideInfo';

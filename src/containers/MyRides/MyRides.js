@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Query } from 'react-apollo';
-import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 import { Link, Redirect } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
 
