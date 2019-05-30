@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Container Login should match the snapshot 1`] = `
+"<div className=\\"containers\\">
+  <h2>
+    Please Login to Continue
+  </h2>
+  <p>
+    Signin with Google to Create an Account or Login
+  </p>
+  <e clientId=\\"716984648143-q0uo1263pr96hegug4iqlotqslidqu9p.apps.googleusercontent.com\\" buttonText=\\"Login\\" onSuccess={[Function]} onFailure={[Function]} cookiePolicy=\\"single_host_origin\\" type=\\"button\\" tag=\\"button\\" scope=\\"profile email\\" accessType=\\"online\\" prompt=\\"\\" fetchBasicProfile={true} isSignedIn={false} uxMode=\\"popup\\" disabledStyle={{...}} icon={true} theme=\\"light\\" onRequest={[Function: onRequest]} jsSrc=\\"https://apis.google.com/js/api.js\\" />
+  <Redirect to=\\"/\\" />
+</div>"
+`;
