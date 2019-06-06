@@ -53,10 +53,10 @@ export class MyRequests extends Component {
             if (loading) return <Loader />
             if (error) return <p>{ error }</p>
             return data.pendingRequests.map(({ id, ride, passenger, message, status, createdAt }) => (
-              <div key={id} className="ride-container">
-                <h4>Request from { passenger.firstName }</h4>
+              <div key={id} className="containers requests-container">
+                <h3>Request from { passenger.firstName }</h3>
                 <h4>To join your ride on { ride.departureDate } from { ride.startCity.name } to {ride.endCity.name }</h4>
-                <h4>Message: { message }</h4>
+                <h4>Message: <p>{ message }</p></h4>
                 <h4>There are { ride.availableSeats } seats available.</h4>
                 <Mutation mutation={ADD_RIDER} variables={{ 
                   "passengerId": passenger.id,
@@ -65,7 +65,7 @@ export class MyRequests extends Component {
                   {(createRidePassenger, { data, loading, error }) => {
                     if (loading) return <Loader />
                     if (error) return <p>{ error }</p> 
-                    if (!data) return <button className="green-button" onClick={createRidePassenger}>Add { passenger.firstName } to Ride</button>
+                    if (!data) return <button className="standard-button green-button" onClick={createRidePassenger}>Add { passenger.firstName } to Ride</button>
                     if (data) return <h3>Rider Added!</h3>
                   }}
                 </Mutation>
@@ -76,7 +76,7 @@ export class MyRequests extends Component {
                   {(changeRequestStatus, { data, loading, error }) => {
                     if (loading) return <Loader />
                     if (error) return <p>{ error }</p>
-                    if (!data) return <button onClick={changeRequestStatus}>Reject { passenger.firstName }'s Request</button>
+                    if (!data) return <button className="standard-button red-button" onClick={changeRequestStatus}>Reject { passenger.firstName }'s Request</button>
                     if (data) return <h3>Rider Rejected!</h3>
                   }}
                 </Mutation>

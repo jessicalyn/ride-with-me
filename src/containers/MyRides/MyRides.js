@@ -37,13 +37,13 @@ export class MyRides extends Component {
             if (error) return <p>{ error }</p>
             return data.myRides.map(({ id, departureDate, driver, endCity, startCity }) => (
               <div key={id} className="ride-container">
-                <div>
+                <div className="info-cont">
                   <h4>Ride with { driver.firstName }</h4>
                   <p>{ startCity.name } to { endCity.name }</p>
                   <p>Departure Date: { departureDate }</p>
                   <Link to={`/rides/${id}`} myrides={ data.myRides } key={id}>See Ride Info</Link>
                 </div>
-                <div>
+                <div className="img-cont">
                   <img src={`https://maps.googleapis.com/maps/api/staticmap?size=300x200&markers=color:green%7Clabel:1%7C${startCity.name}&markers=color:red|label:2|${endCity.name}&key=AIzaSyC1l-GGLlVWnXFaybX2DaJr4bS4ANmAWMo`} alt="map" />
                 </div>
               </div>

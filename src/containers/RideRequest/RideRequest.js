@@ -36,7 +36,7 @@ export class RideRequest extends Component {
       <div className="containers">
         <h2>Ride Request</h2>
         <form>
-          <label>Write a message to { this.props.driverName }:</label>
+          <h3>Write a message to { this.props.driverName }:</h3>
           <textarea 
             name="message" 
             value={ this.state.message }
@@ -48,7 +48,7 @@ export class RideRequest extends Component {
             {(createRequest, { data, loading, error }) => {
               if (loading) return <Loader />
               if (error) return <p>{ error }</p>
-              if (!data) return <button onClick={(e) => {
+              if (!data) return <button className="standard-button request-button" onClick={(e) => {
                 e.preventDefault()
                 createRequest({ variables: {
                   "message": message,
@@ -56,7 +56,7 @@ export class RideRequest extends Component {
                   "rideId": rideId
                 }})
               }}>Send Request</button>
-              if (data) return <h3>Ride Completed!</h3>
+              if (data) return <h3>Request Sent!</h3>
             }}
           </Mutation>
         </form>
