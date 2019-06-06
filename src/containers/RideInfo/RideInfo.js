@@ -65,7 +65,7 @@ export class RideInfo extends Component {
         {(deleteRidePassenger, { data, loading, error }) => {
           if (loading) return <Loader />
           if (error) return <div>{ error }</div>
-          if (!data) return <button onClick={deleteRidePassenger}>Cancel Ride</button>
+          if (!data) return <button className="standard-button red" onClick={deleteRidePassenger}>Cancel Ride</button>
           if (data) return <h3>Ride Cancelled!</h3>
         }}
         </Mutation>
@@ -77,7 +77,7 @@ export class RideInfo extends Component {
           {(changeRideStatus, { data, loading, error }) => {
             if (loading) return <Loader />
             if (error) return <div>{ error }</div>
-            if (!data) return <button className="green-button" onClick={changeRideStatus}>Ride Completed</button>
+            if (!data) return <button className="standard-button green" onClick={changeRideStatus}>Ride Completed</button>
             if (data) return <h3>Ride Completed!</h3>
           }}
           </Mutation>

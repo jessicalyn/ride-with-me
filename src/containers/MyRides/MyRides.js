@@ -38,10 +38,10 @@ export class MyRides extends Component {
             return data.myRides.map(({ id, departureDate, driver, endCity, startCity }) => (
               <div key={id} className="ride-container">
                 <div className="info-cont">
-                  <h4>Ride with { driver.firstName }</h4>
-                  <p>{ startCity.name } to { endCity.name }</p>
-                  <p>Departure Date: { departureDate }</p>
-                  <Link to={`/rides/${id}`} myrides={ data.myRides } key={id}>See Ride Info</Link>
+                  <h3>Ride with { driver.firstName }</h3>
+                  <h4>{ startCity.name } to { endCity.name }</h4>
+                  <h4 className="lower-h4">Departure Date: { departureDate }</h4>
+                  <Link className="ride-link" to={`/rides/${id}`} myrides={ data.myRides } key={id}>See Ride Info</Link>
                 </div>
                 <div className="img-cont">
                   <img src={`https://maps.googleapis.com/maps/api/staticmap?size=300x200&markers=color:green%7Clabel:1%7C${startCity.name}&markers=color:red|label:2|${endCity.name}&key=AIzaSyC1l-GGLlVWnXFaybX2DaJr4bS4ANmAWMo`} alt="map" />

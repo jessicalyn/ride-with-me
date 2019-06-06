@@ -17,17 +17,28 @@ button {
 
   &:hover {
     color: #ffffff;
-    background: red;
-    border-color: red;
     transition: all 0.4s ease 0s;
     }
 }
 
-.green-button:hover {
-  background: green;
-  border-color: green
+.red:hover {
+  background: #C21915;
+  border-color: #C21915
+}
+
+.green:hover {
+  background: #176F40;
+  border-color: #176F40
 }
 
 .bold {
   font-weight: 600;
+}
+
+.green {
+  width: 200px;
+}
+
+.red {
+  width: 200px;
 }
