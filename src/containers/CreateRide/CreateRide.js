@@ -68,38 +68,30 @@ export class CreateRide extends Component {
       <div className="create-ride-container">
         <div>
           { !this.props.user && <Redirect to='/login' />}
-          <h3>Create a Ride</h3>
+          <h2>Create a Ride</h2>
           <form>
-            <div className="sections">
-              <label>Start City</label>
+            <div className="cities-container">
+              <h4>Start City</h4>
               <select className="create-drop-down" value={startCityId} name="startCityId" onChange={this.handleChange}>
                 <option value="0" disable="true" select="true" default>Select a City</option>
                 {this.displayCities()}
               </select>
-            </div>
-            <div className="sections">
-              <label>End City</label>
+              <h4>End City</h4>
               <select className="create-drop-down" value={endCityId} name="endCityId" onChange={this.handleChange}>
                 <option value="0" disable="true" select="true" default>Select a City</option>
                 {this.displayCities()}
               </select>
+              <h4>Start Date</h4>
+              <input type="date" name="departureDate" value={departureDate} onChange={this.handleChange} />
             </div>
-            <div className="sections">
-              <label>Start Date</label>
-              <input className="mb2" type="date" name="departureDate" value={departureDate} onChange={this.handleChange} />
+            <div className="info-section">
+              <h4>Compensation</h4>
+              <input type="number" name="price" value={price} onChange={this.handleChange} />
+              <h4>Available Seats</h4>
+              <input type="text" name="totalSeats" value={totalSeats} onChange={this.handleChange} />
+              <h4>Short Description</h4>
+              <input className="description-input" type="text" name="description" value={description} onChange={this.handleChange} />
             </div>
-            <div className="sections">
-              <label>Compensation</label>
-              <input className="mb2" type="number" name="price" value={price} onChange={this.handleChange} />
-            </div>
-            <div className="sections">
-              <label>Available Seats</label>
-              <input className="mb2" type="text" name="totalSeats" value={totalSeats} onChange={this.handleChange} />
-            </div>
-            <div className="sections">
-              <label>Short Description</label>
-              <input className="mb2" type="text" name="description" value={description} onChange={this.handleChange} />
-              </div>
           </form>
         </div>
         <Mutation mutation={CREATE_RIDE} variables={{ 

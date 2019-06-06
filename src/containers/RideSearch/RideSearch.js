@@ -65,14 +65,14 @@ export class RideSearch extends Component {
         {this.props.cities?  
           <form className="search-form" onSubmit={this.handleSubmit}>
             <div className="search-divs">
-              <label>Start Location</label>
+              <label>Start City</label>
               <select className="search-drop-down" value={start_location} name="start_location" onChange={this.handleChange}>
                 <option value="0" disable="true" select="true" default>Select a City</option>
                 {this.displayCities()}
               </select>
             </div>
             <div className="search-divs">
-              <label>End Location</label>
+              <label>End City</label>
               <select className="search-drop-down" value={end_location} name="end_location" onChange={this.handleChange}>
                 <option value="0" disable="true" select="true" default>Select a City</option>
                 {this.displayCities()}
@@ -83,7 +83,7 @@ export class RideSearch extends Component {
               <input type="date" value={start_date} name="start_date" onChange={this.handleChange}></input>
             </div>
             <div className="search-divs">
-              <button className="search-button">Search</button>
+              <button className="standard-button search-button">Search</button>
             </div>
           </form>
         : <Loader /> }

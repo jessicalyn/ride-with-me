@@ -1,12 +1,26 @@
 .search-results-container {
-  box-shadow: $box-shadow;
-  border: 2px solid black;
+  box-shadow: $grey-box-shadow;
   width: 80%;
   margin: 20px auto;
   background-color: white;
   border-radius: 10px;
+  padding: 15px;
 
   button {
     width: 200px;
+    margin-top: 20px
   }
+}
+
+.details-container {
+  display: flex;
+  flex-direction: row
+}
+
+.info-container {
+  flex: 1
+}
+
+.image-container {
+  flex: 1
 }

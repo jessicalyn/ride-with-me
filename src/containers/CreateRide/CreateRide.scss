@@ -11,6 +11,19 @@ label {
   display: block
 }
 
+form {
+  display: flex;
+  flex-direction: row
+}
+
+.cities-container {
+  flex: 1
+}
+
+.info-section {
+  flex: 1
+}
+
 .create-drop-down {
   display: block;
   font-size: 16px;
@@ -61,6 +74,7 @@ label {
   font-weight: 700;
   border: 1.5px solid #aaa;
   padding: 0;
+  margin-top: 30px;
   
   &:hover {
     background: #aaa;
@@ -70,10 +84,18 @@ label {
 
 input {
   width: 250px;
-  height: 50px;
-  border-radius: 5px;
+  height: 40px;
   font-family: $font-main;
   padding-left: 5%;
   font-size: 16px;
-  margin: 10px
+  margin: 0;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  border-radius: .5em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.description-input {
+  width: 450px
 }

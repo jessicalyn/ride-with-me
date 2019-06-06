@@ -1,8 +1,22 @@
-.ride-container {
-  display: block
+.requests-container {
+  display: block;
+  box-shadow: $grey-box-shadow;
+}
+
+.green-button {
+  width: 50%
+}
+
+.red-button {
+  width: 50%
 }
 
 .green-button:hover {
-  background: green;
-  border-color: green
+  background: #176F40;
+  border-color: #176F40
+}
+
+.red-button:hover {
+  background: #C21915;
+  border-color: #C21915
 }
