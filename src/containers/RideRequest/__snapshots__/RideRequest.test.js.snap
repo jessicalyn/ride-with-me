@@ -6,10 +6,10 @@ exports[`RideRequest Container RideRequest should match the snapshot 1`] = `
     Ride Request
   </h2>
   <form>
-    <label>
+    <h3>
       Write a message to 
       :
-    </label>
+    </h3>
     <textarea name=\\"message\\" value=\\"I\\\\'d like to join your ride...\\" onChange={[Function]} rows=\\"5\\" cols=\\"33\\" />
     <Mutation mutation={{...}}>
       [function]
